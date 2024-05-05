@@ -5,7 +5,7 @@ Write-Host " ***************************"
 Write-Host
 Write-Host " 1.) Start-OSDCloudGUI"
 Write-Host " 2.) Start-OSDCloudAzure"
-Write-Host " 3.) az.osdcloud.com
+Write-Host " 3.) az.osdcloud.com"
 Write-Host " 4.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
