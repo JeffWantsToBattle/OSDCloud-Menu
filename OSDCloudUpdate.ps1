@@ -33,6 +33,7 @@ if ($disk -eq $null) {
         New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
         #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/file1 -OutFile .\file1
         #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/file2 -OutFile .\file2
+#Need to add try/catch error
         Write-host " Updating compleet" -ForegroundColor Green
         Write-Host
         cmd /c 'pause'
