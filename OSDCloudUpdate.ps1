@@ -1,12 +1,16 @@
-CLS
 ###Custom variables
 $version = "V1.0"
+
+###Version check thats not working > adds enter add the end of the file
+#$version2 = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
+#$version2 = $version2.Content
 
 ###Search OSDCloud disk
 $disk = Get-WMIObject Win32_Volume | ? { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
 
 ###Intro formatting
+CLS
 Write-Host " ***************************"
 Write-Host " *     OSDCloud Update     *"
 Write-Host " ***************************"
