@@ -5,21 +5,20 @@ $version = "V1.0"
 $disk = Get-WMIObject Win32_Volume | ? { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
 
-if ($disk -eq "") {
-    Write-host "OSDCloud niet gevonden"
-    cmd /c 'pause'
+if ($disk -eq $null) {
+    Write-host "OSDCloudUSB drive not found"
 } else {
+    Write-host "OSDCloudUS drive found"
     #Check version
-    $file = "versie.txt"
-    $versioncheck = Get-Content $disk$file -ErrorAction SilentlyContinue
-
+    $file = "Version.txt"
+    $folder = 'OSDCloud\'
+    $location = "$disk$folder"
+    $versioncheck = Get-Content "$location$file" -ErrorAction SilentlyContinue
     if ($versioncheck -eq $version){
         Write-host "OSDCloud is up-to-date"
-        cmd /c 'pause'
     } else {
-        Write-host "updating OSDCloud"
-
+        Write-host "Updating OSDCloud"
         #Write new version
-        New-Item -Path $disk -Name "versie.txt" -ItemType "file" -Value $versie -Force
+        New-Item -Path $location -Name "Version.txt" -ItemType "file" -Value $versie -Force
     }
 }
