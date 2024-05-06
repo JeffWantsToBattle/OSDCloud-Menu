@@ -17,7 +17,7 @@ if ($disk -eq $null) {
     Write-Host
     cmd /c 'pause'
 } else {
-    Write-host " OSDCloudUSB drive found" -ForegroundColor Green
+    Write-host " OSDCloudUSB drive found on $disk" -ForegroundColor Green
     ###Check version
     $file = "Version.txt"
     $folder = 'OSDCloud\'
