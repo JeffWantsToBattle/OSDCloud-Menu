@@ -1,3 +1,4 @@
+CLS
 #Custom variables
 $version = "V1.0"
 
