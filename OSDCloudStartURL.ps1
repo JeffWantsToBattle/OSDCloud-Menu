@@ -6,6 +6,7 @@ Write-Host
 Write-Host " 1.) OSDCloud local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
+Write-Host " 4.) Update OSDCloud"
 Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
@@ -25,6 +26,9 @@ Switch ($Select)
        }
     3 {
         iex (irm az.osdcloud.com)
+       }
+    4 {
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdate.ps1'
        }
     }
 }
