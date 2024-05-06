@@ -7,6 +7,7 @@ $disk = $disk.Name
 
 if ($disk -eq $null) {
     Write-host "OSDCloudUSB drive not found"
+    cmd /c 'pause'
 } else {
     Write-host "OSDCloudUS drive found"
     #Check version
@@ -16,9 +17,13 @@ if ($disk -eq $null) {
     $versioncheck = Get-Content "$location$file" -ErrorAction SilentlyContinue
     if ($versioncheck -eq $version){
         Write-host "OSDCloud is up-to-date"
+        cmd /c 'pause'
     } else {
         Write-host "Updating OSDCloud"
         #Write new version
         New-Item -Path $location -Name "Version.txt" -ItemType "file" -Value $versie -Force
+        Write-host "Updating compleet"
+        cmd /c 'pause'
+
     }
 }
