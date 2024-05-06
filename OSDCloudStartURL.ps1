@@ -6,7 +6,7 @@ Write-Host
 Write-Host " 1.) OSDCloud local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
-Write-Host " 4.) Quit"
+Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
 }
@@ -28,4 +28,4 @@ Switch ($Select)
        }
     }
 }
-While ($Select -ne 4)
+While ($Select -ne Q)
