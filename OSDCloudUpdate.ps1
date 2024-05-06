@@ -21,7 +21,7 @@ if ($disk -eq $null) {
     } else {
         Write-host "Updating OSDCloud"
         #Write new version
-        New-Item -Path $location -Name "Version.txt" -ItemType "file" -Value $versie -Force
+        New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force
         Write-host "Updating compleet"
         cmd /c 'pause'
 
