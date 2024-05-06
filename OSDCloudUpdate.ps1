@@ -7,7 +7,7 @@ $disk = Get-WMIObject Win32_Volume | ? { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
 
 Write-Host " ***************************"
-Write-Host " *         OSDCloud        *"
+Write-Host " *     OSDCloud Update     *"
 Write-Host " ***************************"
 Write-Host
 
