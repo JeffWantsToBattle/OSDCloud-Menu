@@ -23,6 +23,7 @@ if ($disk -eq $null) {
     $versioncheck = Get-Content "$location$file" -ErrorAction SilentlyContinue
     if ($versioncheck -eq $version){
         Write-host " OSDCloudUSB already up-to-date" -ForegroundColor Green
+        Write-Host
         cmd /c 'pause'
     } else {
         Write-host " Updating OSDCloudUSB" -ForegroundColor Green
@@ -31,6 +32,7 @@ if ($disk -eq $null) {
         #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/file1 -OutFile .\file1
         #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/file2 -OutFile .\file2
         Write-host " Updating compleet" -ForegroundColor Green
+        Write-Host
         cmd /c 'pause'
 
     }
