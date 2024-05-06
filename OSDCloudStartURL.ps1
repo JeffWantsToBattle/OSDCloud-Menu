@@ -32,4 +32,4 @@ Switch ($Select)
        }
     }
 }
-While ($Select -ne Q)
+While ($Select -ne "Q")
