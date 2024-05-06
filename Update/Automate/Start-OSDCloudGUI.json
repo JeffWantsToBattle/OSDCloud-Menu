@@ -1,0 +1,43 @@
+{
+    "BrandName":  "OSDCloud Jeffrey",
+    "BrandColor":  "#0096D6",
+    "OSActivation":  "Retail",
+    "OSEdition":  "Pro",
+    "OSLanguage":  "nl-nl",
+    "OSImageIndex":  8,
+    "OSName":  "Windows 11 23H2 x64",
+    "OSReleaseID":  "23H2",
+    "OSVersion":  "Windows 11",
+    "OSActivationValues":  [
+                               "Retail",
+                               "Volume"
+                           ],
+    "OSEditionValues":  [
+                            "Enterprise",
+                            "Pro"
+                        ],
+    "OSLanguageValues":  [
+                             "en-us",
+                             "nl-nl"
+                         ],
+    "OSNameValues":  [
+                         "Windows 11 23H2 x64",
+                         "Windows 11 22H2 x64",
+                         "Windows 10 22H2 x64"
+                     ],
+    "OSReleaseIDValues":  [
+                              "23H2",
+                              "22H2"
+                          ],
+    "OSVersionValues":  [
+                            "Windows 11",
+                            "Windows 10"
+                        ],
+    "captureScreenshots":  false,
+    "ClearDiskConfirm":  true,
+    "restartComputer":  true,
+    "updateDiskDrivers":  true,
+    "updateFirmware":  false,
+    "updateNetworkDrivers":  true,
+    "updateSCSIDrivers":  true
+}
