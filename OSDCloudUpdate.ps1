@@ -6,11 +6,13 @@ $version = "V1.0"
 $disk = Get-WMIObject Win32_Volume | ? { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
 
+###Intro formatting
 Write-Host " ***************************"
 Write-Host " *     OSDCloud Update     *"
 Write-Host " ***************************"
 Write-Host
 
+###Check if OSDCloudUSB drive is found
 if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
     Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
@@ -37,6 +39,5 @@ if ($disk -eq $null) {
         Write-host " Updating compleet" -ForegroundColor Green
         Write-Host
         cmd /c 'pause'
-
     }
 }
