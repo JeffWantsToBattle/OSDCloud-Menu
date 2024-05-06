@@ -13,6 +13,8 @@ Write-Host
 
 if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
+    Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
+    Write-Host
     cmd /c 'pause'
 } else {
     Write-host " OSDCloudUSB drive found" -ForegroundColor Green
