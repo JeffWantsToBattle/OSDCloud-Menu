@@ -30,7 +30,7 @@ if ($disk -eq $null) {
     } else {
         Write-host " Updating OSDCloudUSB" -ForegroundColor Green
         ###Write new version
-        New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force
+        New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
         #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/file1 -OutFile .\file1
         #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/file2 -OutFile .\file2
         Write-host " Updating compleet" -ForegroundColor Green
