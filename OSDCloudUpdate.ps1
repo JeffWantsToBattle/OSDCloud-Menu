@@ -36,10 +36,12 @@ if ($disk -eq $null) {
     } else {
         Write-host " Updating OSDCloudUSB" -ForegroundColor Green
         ###Write new version
-        New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
-        #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
-        #Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt -OutFile $location\Version.txt
-#Need to add try/catch error
+        try {
+            New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.jso -OutFile $location\Automate\Start-OSDCloudGUI.json
+        } catch {
+            Write-output $_
+        }
         Write-host " Updating compleet" -ForegroundColor Green
         Write-Host
         cmd /c 'pause'
