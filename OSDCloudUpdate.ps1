@@ -1,5 +1,5 @@
 ###Custom variables
-$version = "V1.0"
+$version = "V1.3"
 
 ###Version check thats not working > adds enter add the end of the file
 #$version2 = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
@@ -35,15 +35,21 @@ if ($disk -eq $null) {
         cmd /c 'pause'
     } else {
         Write-host " Updating OSDCloudUSB" -ForegroundColor Green
-        ###Write new version
+        ###Write new version + error handeling
         try {
-            New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
             Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
         } catch {
-            Write-output $_
+            Write-host " An error occurred: $($_.Exception.Message)" -ForegroundColor Red
+            $error1 = 1
         }
-        Write-host " Updating compleet" -ForegroundColor Green
-        Write-Host
-        cmd /c 'pause'
+        if ($error1 -eq "1"){
+            Write-Host
+            cmd /c 'pause'
+        } else {
+            New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
+            Write-host " Updating compleet" -ForegroundColor Green
+            Write-Host
+            cmd /c 'pause'
+        }
     }
 }
