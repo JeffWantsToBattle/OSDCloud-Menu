@@ -12,25 +12,25 @@ Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
 }
-cls
+Clear-Host
 Do {
-cls
+Clear-Host
 Invoke-Command $MainMenu
 $Select = Read-Host
 Switch ($Select)
     {
     1 {
         Start-OSDCloudGUI
-       }
+    }
     2 {
         Start-OSDCloudAzure
-       }
+    }
     3 {
         iex (irm az.osdcloud.com)
-       }
+    }
     4 {
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdate.ps1'
-       }
+    }
     }
 }
 While ($Select -ne "Q")

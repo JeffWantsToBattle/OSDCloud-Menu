@@ -6,11 +6,11 @@ $version = "V1.0"
 #$version2 = $version2.Content
 
 ###Search OSDCloud disk
-$disk = Get-WMIObject Win32_Volume | ? { $_.Label -eq 'OSDCloudUSB' }
+$disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
 
 ###Intro formatting
-CLS
+Clear-Host
 Write-Host " ***************************"
 Write-Host " *     OSDCloud Update     *"
 Write-Host " ***************************"
