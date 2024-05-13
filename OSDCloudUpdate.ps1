@@ -1,5 +1,5 @@
 ###Custom variables
-$version = "V1.3"
+$version = "V1.0"
 
 ###Version check thats not working > adds enter add the end of the file
 #$version2 = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
