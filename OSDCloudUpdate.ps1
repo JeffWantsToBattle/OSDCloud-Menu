@@ -1,5 +1,5 @@
 ###Custom variables
-$version = "V1.1"
+$version = "V1.0"
 
 ###Version check thats not working > adds enter add the end of the file
 #$version2 = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
@@ -38,7 +38,7 @@ if ($disk -eq $null) {
         ###Write new version
         try {
             New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
-            Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.jso -OutFile $location\Automate\Start-OSDCloudGUI.json
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
         } catch {
             Write-output $_
         }
