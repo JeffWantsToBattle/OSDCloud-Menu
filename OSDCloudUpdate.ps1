@@ -1,7 +1,7 @@
 ###Custom variables
 #$version = "V1.0"
 
-###Version check thats not working > adds enter add the end of the file
+###Getting version from .\Update\Version.txt
 $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
 $version = ($version2.Content -split '\n')[0]
 
