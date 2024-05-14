@@ -1,9 +1,9 @@
 ###Custom variables
-$version = "V1.0"
+#$version = "V1.0"
 
 ###Version check thats not working > adds enter add the end of the file
-#$version2 = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
-#$version2 = $version2.Content
+$version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
+$version = ($version2.Content -split '\n')[0]
 
 ###Search OSDCloud disk
 $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
