@@ -1,4 +1,4 @@
-#set-disres 1600
+a#set-disres 1600
 $MainMenu = {
 Write-Host " ***************************"
 Write-Host " *         OSDCloud        *"
@@ -8,7 +8,7 @@ Write-Host " 1.) OSDCloud local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
 Write-Host " 4.) Update OSDCloudUSB"
-Write-Host " 5.) Download Windows 11 23H2 Offline"
+Write-Host " 5.) Download Windows 11 23H2 Retail"
 Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
