@@ -28,7 +28,6 @@ if ($disk -eq $null) {
     $folder = 'OSDCloud\'
     $location = "$disk$folder"
     $versioncheck = Get-Content "$location$file" -ErrorAction SilentlyContinue
-    $versioncheck = ($versioncheck -split '\n')[0]
     if ($versioncheck -eq $version){
         Write-host " OSDCloudUSB already up-to-date" -ForegroundColor Green
         Write-Host
