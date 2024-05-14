@@ -7,7 +7,7 @@ Write-Host " 1.) Download HP Drivers"
 Write-Host " 2.) Download DELL Drivers"
 Write-Host " 3.) Download Lenovo Drivers"
 Write-Host " 4.) Download Microsoft Drivers"
-Write-Host " Q.) Quit"
+Write-Host " Q.) Back"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
 }
