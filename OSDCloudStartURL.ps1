@@ -1,4 +1,4 @@
-a#set-disres 1600
+#set-disres 1600
 $MainMenu = {
 Write-Host " ***************************"
 Write-Host " *         OSDCloud        *"
