@@ -40,6 +40,7 @@ Switch ($Select)
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
 #Add Autopilot?
+#Add Update-OSDCloudUSB -PSUpdate
     }
 }
 While ($Select -ne "Q")
