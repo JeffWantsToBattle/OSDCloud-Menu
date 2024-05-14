@@ -3,7 +3,7 @@
 
 ###Getting version from .\Update\Version.txt
 $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
-$version = ($version2.Content -split '\n')[0]
+$version = ($version.Content -split '\n')[0]
 
 ###Search OSDCloud disk
 $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
@@ -28,7 +28,7 @@ if ($disk -eq $null) {
     $file = "Version.txt"
     $folder = 'OSDCloud\'
     $location = "$disk$folder"
-    $versioncheck = Get-Content "$location$file" -ErrorAction SilentlyContinue
+    $versioncheck = Get-Content "$location$file" -First 1 -ErrorAction SilentlyContinue
     if ($versioncheck -eq $version){
         Write-host " OSDCloudUSB already up-to-date" -ForegroundColor Green
         Write-Host
