@@ -4,11 +4,12 @@ Write-Host " ***************************"
 Write-Host " *         OSDCloud        *"
 Write-Host " ***************************"
 Write-Host
-Write-Host " 1.) OSDCloud local"
+Write-Host " 1.) OSDCloud Local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
 Write-Host " 4.) Update OSDCloudUSB"
 Write-Host " 5.) Download Windows 11 23H2 Retail"
+Write-Host " 6.) Download Drivers Menu"
 Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
@@ -34,6 +35,9 @@ Switch ($Select)
     }
     5 {
         Update-OSDCloudUSB -OSName "Windows 11 23H2" -OSLanguage nl-nl -OSLicense Retail
+    }
+    6 {
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
     }
 }
