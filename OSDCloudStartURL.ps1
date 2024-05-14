@@ -8,6 +8,7 @@ Write-Host " 1.) OSDCloud local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
 Write-Host " 4.) Update OSDCloudUSB"
+Write-Host " 5.) Download Windows 11 23H2 Offline"
 Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
@@ -30,6 +31,9 @@ Switch ($Select)
     }
     4 {
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdate.ps1'
+    }
+    5 {
+        Update-OSDCloudUSB -OSName "Windows 11 23H2" -OSLanguage nl-nl -OSLicense Retail
     }
     }
 }
