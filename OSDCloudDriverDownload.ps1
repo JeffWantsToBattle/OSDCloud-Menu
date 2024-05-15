@@ -1,6 +1,6 @@
 $MainMenu = {
 Write-Host " ***************************"
-Write-Host " *     OSDCloud Driver     *"
+Write-Host " *     OSDCloud Drivers     *"
 Write-Host " ***************************"
 Write-Host
 Write-Host " 1.) Download HP Drivers"
