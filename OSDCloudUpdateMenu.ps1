@@ -32,7 +32,7 @@ if ($disk -eq $null) {
     Write-Host " *   OSDCloud Update menu  *"
     Write-Host " ***************************"
     Write-Host
-    Write-Host " OSDCloud version " -nonewline
+    Write-Host " OSDCloudUSB version " -nonewline
     if ($versionondisk -lt $version) {
         Write-Host "$versionondisk " -nonewline -ForegroundColor Red
         Write-Host "found on $disk"
