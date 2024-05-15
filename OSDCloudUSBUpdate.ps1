@@ -1,3 +1,10 @@
+###Intro formatting
+Clear-Host
+Write-Host " ***************************"
+Write-Host " *     OSDCloud Update     *"
+Write-Host " ***************************"
+Write-Host
+
 ###Custom variables
 #$version = "V1.0"
 
@@ -24,12 +31,13 @@ if ($disk -eq $null) {
     cmd /c 'pause'
 } else {
     Write-host " OSDCloudUSB drive found on $disk" -ForegroundColor Green
-    ###Check version
+    ###Getting version from OSDCloudUSB drive
     $file = "Version.txt"
     $folder = 'OSDCloud\'
     $location = "$disk$folder"
-    $versioncheck = Get-Content "$location$file" -ErrorAction SilentlyContinue
-    if ($versioncheck -eq $version){
+    $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
+    ###Version check
+    if ($versionondisk -eq $version){
         Write-host " OSDCloudUSB already up-to-date" -ForegroundColor Green
         Write-Host
         cmd /c 'pause'
