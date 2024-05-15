@@ -23,7 +23,7 @@ Switch ($Select)
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudOSDUpdate.ps1'
     }
     2 {
-        #Add update WinPE (New-OSDCloudUSB -fromIsoUrl ) < werkt mogelijk niet in WinPE maar wel in Windows.
+        #New-OSDCloudUSB -fromIsoUrl "Blob URL"
     }
     3 {
         Update-OSDCloudUSB -PSUpdate
