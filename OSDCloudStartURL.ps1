@@ -30,7 +30,15 @@ Switch ($Select)
         iex (irm az.osdcloud.com)
     }
     4 {
+    Clear-Host
+    try {
         Get-WindowsAutopilotInfo.ps1 -online
+    } Catch {
+        Clear-Host
+        Write-Host " Autopilot script niet gevonden, script downloaden"
+        install-script Get-WindowsAutopilotInfo.ps1
+        Get-WindowsAutopilotInfo.ps1 -online
+    }
     }
     5 {
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
