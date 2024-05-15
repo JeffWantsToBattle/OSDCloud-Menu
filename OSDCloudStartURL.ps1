@@ -8,7 +8,7 @@ Write-Host " 1.) OSDCloud Local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
 Write-Host " 4.) Autopilot"
-Write-Host " 5.) Update menu"
+Write-Host " 5.) OSDCloudUSB Update menu"
 Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
