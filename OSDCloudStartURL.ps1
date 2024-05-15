@@ -41,6 +41,7 @@ Switch ($Select)
     }
 #Add Autopilot?
 #Add Update-OSDCloudUSB -PSUpdate
+#Add update WinPE (New-OSDCloudUSB -fromIsoUrl ) < werkt mogelijk niet in WinPE maar wel in Windows.
     }
 }
 While ($Select -ne "Q")
