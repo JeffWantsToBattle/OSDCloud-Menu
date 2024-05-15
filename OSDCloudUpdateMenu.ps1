@@ -34,10 +34,10 @@ if ($disk -eq $null) {
     Write-Host " OSDCloud version $versionondisk found on $disk" -nonewline
     if ($versionondisk -lt $version) {
         Write-Host "$versionondisk" -nonewline -ForegroundColor Red
-        Write "found on $disk"
+        Write-Host "found on $disk"
     } else {
         Write-Host "$versionondisk" -nonewline -ForegroundColor green
-        Write "found on $disk"
+        Write-Host "found on $disk"
     }
     Write-Host " 1.) Update OSDCloudUSB to version $version"
     Write-Host " 2.) Update WinPE < not ready"
