@@ -35,12 +35,10 @@ Switch ($Select)
         Get-WindowsAutopilotInfo.ps1 -online
     } Catch {
         Clear-Host
-        Write-Host " Autopilot script niet gevonden, script downloaden"
+        Write-Host "Autopilot script not fout, installing script"
         install-script -Name Get-WindowsAutoPilotInfo -force
         Write-Host " Autopilot script geinstalleerd en wordt uitgevoerd"
         Get-WindowsAutopilotInfo.ps1 -online
-        Write-Host " Script uitgevoerd"
-        cmd /c 'pause'
     }
     }
     5 {
