@@ -20,15 +20,19 @@ Switch ($Select)
     {
     1 {
         Update-OSDCloudUSB -DriverPack HP
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
     2 {
         Update-OSDCloudUSB -DriverPack Dell
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
     3 {
         Update-OSDCloudUSB -DriverPack Lenovo
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
     4 {
         Update-OSDCloudUSB -DriverPack Microsoft
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
     }
 }
