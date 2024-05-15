@@ -31,12 +31,12 @@ if ($disk -eq $null) {
     Write-Host " ***************************"
     Write-Host " *   OSDCloud Update menu  *"
     Write-Host " ***************************"
-    Write-Host " OSDCloud version $versionondisk found on $disk" -nonewline
+    Write-Host " OSDCloud version " -nonewline
     if ($versionondisk -lt $version) {
-        Write-Host "$versionondisk" -nonewline -ForegroundColor Red
+        Write-Host "$versionondisk " -nonewline -ForegroundColor Red
         Write-Host "found on $disk"
     } else {
-        Write-Host "$versionondisk" -nonewline -ForegroundColor green
+        Write-Host "$versionondisk " -nonewline -ForegroundColor green
         Write-Host "found on $disk"
     }
     Write-Host " 1.) Update OSDCloudUSB to version $version"
