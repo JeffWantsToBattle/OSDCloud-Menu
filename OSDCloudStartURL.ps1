@@ -33,7 +33,7 @@ Switch ($Select)
         Get-WindowsAutopilotInfo.ps1 -online
     }
     5 {
-        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudOSDUpdate.ps1'
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
     }
     }
 }
