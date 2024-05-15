@@ -7,9 +7,8 @@ Write-Host
 Write-Host " 1.) OSDCloud Local"
 Write-Host " 2.) OSDCloud Azure"
 Write-Host " 3.) OSDCloud Azure Sandbox"
-Write-Host " 4.) Update OSDCloudUSB"
-Write-Host " 5.) Download Windows 11 23H2 Retail"
-Write-Host " 6.) Download Drivers Menu"
+Write-Host " 4.) Autopilot"
+Write-Host " 5.) Update menu"
 Write-Host " Q.) Quit"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
@@ -31,17 +30,11 @@ Switch ($Select)
         iex (irm az.osdcloud.com)
     }
     4 {
-        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudOSDUpdate.ps1'
+        Get-WindowsAutopilotInfo.ps1 -online
     }
     5 {
-        Update-OSDCloudUSB -OSName "Windows 11 23H2" -OSLanguage nl-nl -OSLicense Retail
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudOSDUpdate.ps1'
     }
-    6 {
-        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
-    }
-#Add Autopilot?
-#Add Update-OSDCloudUSB -PSUpdate
-#Add update WinPE (New-OSDCloudUSB -fromIsoUrl ) < werkt mogelijk niet in WinPE maar wel in Windows.
     }
 }
 While ($Select -ne "Q")
