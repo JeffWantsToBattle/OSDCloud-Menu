@@ -1,7 +1,7 @@
 ###Intro formatting
 Clear-Host
 Write-Host " ***************************"
-Write-Host " *     OSDCloud Update     *"
+Write-Host " *    OSDCloudUSB Update   *"
 Write-Host " ***************************"
 Write-Host
 
