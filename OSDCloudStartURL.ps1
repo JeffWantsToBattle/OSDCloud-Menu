@@ -46,9 +46,6 @@ Switch ($Select)
     5 {
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
     }
-    q {
-        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudStartURL.ps1'
-    }
     }
 }
-While ($Select -ne "Z")
+While ($Select -ne "Q")
