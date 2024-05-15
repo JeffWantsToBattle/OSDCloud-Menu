@@ -8,7 +8,7 @@ Write-Host " 2.) Update WinPE < not ready"
 Write-Host " 3.) Update Powershell scripts"
 Write-Host " 4.) Download Windows 11 23H2 Retail"
 Write-Host " 5.) Download Drivers (Menu)"
-Write-Host " Q.) Quit"
+Write-Host " Q.) Back"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
 }
