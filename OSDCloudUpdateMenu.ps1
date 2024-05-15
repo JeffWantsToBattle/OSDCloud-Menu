@@ -39,7 +39,7 @@ if ($disk -eq $null) {
         Write-Host "$versionondisk" -nonewline -ForegroundColor green
         Write "found on $disk"
     }
-    Write-Host " 1.) Update OSDCloudUSB to $version"
+    Write-Host " 1.) Update OSDCloudUSB to version $version"
     Write-Host " 2.) Update WinPE < not ready"
     Write-Host " 3.) Update Powershell scripts"
     Write-Host " 4.) Download Windows 11 23H2 Retail"
