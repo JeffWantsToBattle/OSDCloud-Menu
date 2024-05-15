@@ -37,12 +37,18 @@ Switch ($Select)
         Clear-Host
         Write-Host " Autopilot script niet gevonden, script downloaden"
         install-script Get-WindowsAutopilotInfo.ps1 -force
+        Write-Host " Autopilot script geinstalleerd en wordt uitgevoerd"
         Get-WindowsAutopilotInfo.ps1 -online
+        Write-Host " Script uitgevoerd"
+        cmd /c 'pause'
     }
     }
     5 {
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
     }
+    q {
+        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudStartURL.ps1'
+    }
     }
 }
-While ($Select -ne "Q")
+While ($Select -ne "Z")
