@@ -28,7 +28,7 @@ if ($disk -eq $null) {
     $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
     ###Version check
     if ($versionondisk -eq $version){
-        Write-host " OSDCloudUSB already up-to-date" -ForegroundColor Green
+        Write-host " OSDCloudUSB already updated to version $version" -ForegroundColor Green
         Write-Host
         cmd /c 'pause'
     } else {
