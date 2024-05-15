@@ -13,13 +13,6 @@ $version = $version.Content.Split([Environment]::NewLine) | Select -First 1
 $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
 
-###Intro formatting
-Clear-Host
-Write-Host " ***************************"
-Write-Host " *     OSDCloud Update     *"
-Write-Host " ***************************"
-Write-Host
-
 ###Check if OSDCloudUSB drive is found
 if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
