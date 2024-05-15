@@ -57,7 +57,7 @@ if ($disk -eq $null) {
     Switch ($Select)
         {
         1 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudOSDUpdate.ps1'
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
         }
         2 {
             #New-OSDCloudUSB -fromIsoUrl "Blob URL"
