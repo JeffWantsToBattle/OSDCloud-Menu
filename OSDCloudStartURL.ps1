@@ -35,9 +35,13 @@ Switch ($Select)
         Get-WindowsAutopilotInfo.ps1 -online
     } Catch {
         Clear-Host
+        Write-Host " ***************************"
+        Write-Host " *         OSDCloud        *"
+        Write-Host " ***************************"
+        Write-Host
         Write-Host "Autopilot script not fout, installing script"
         install-script -Name Get-WindowsAutoPilotInfo -force
-        Write-Host " Autopilot script geinstalleerd en wordt uitgevoerd"
+        Write-Host "Executing Autopilot script"
         Get-WindowsAutopilotInfo.ps1 -online
     }
     }
