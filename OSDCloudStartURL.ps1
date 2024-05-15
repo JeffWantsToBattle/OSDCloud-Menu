@@ -36,7 +36,7 @@ Switch ($Select)
     } Catch {
         Clear-Host
         Write-Host " Autopilot script niet gevonden, script downloaden"
-        install-script Get-WindowsAutopilotInfo.ps1
+        install-script Get-WindowsAutopilotInfo.ps1 -force
         Get-WindowsAutopilotInfo.ps1 -online
     }
     }
