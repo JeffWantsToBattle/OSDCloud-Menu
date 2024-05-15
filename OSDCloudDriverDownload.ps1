@@ -34,9 +34,6 @@ Switch ($Select)
         Update-OSDCloudUSB -DriverPack Microsoft
         Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
     }
-    q {
-        Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
-    }
     }
 }
-While ($Select -ne "Z")
+While ($Select -ne "Q")
