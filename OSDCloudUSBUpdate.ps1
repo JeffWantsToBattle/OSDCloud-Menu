@@ -5,9 +5,6 @@ Write-Host " *     OSDCloud Update     *"
 Write-Host " ***************************"
 Write-Host
 
-###Custom variables
-#$version = "V1.0"
-
 ###Getting version from .\Update\Version.txt
 $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
 $version = $version.Content.Split([Environment]::NewLine) | Select -First 1
