@@ -31,17 +31,13 @@ Switch ($Select)
     }
     4 {
         Clear-Host
-        try {
             Write-Host " ***************************"
             Write-Host " *         Autopilot       *"
             Write-Host " ***************************"
             Write-Host
+        try {
             Get-WindowsAutopilotInfo.ps1 -online
         } Catch {
-            Write-Host " ***************************"
-            Write-Host " *         Autopilot       *"
-            Write-Host " ***************************"
-            Write-Host
             Write-Host "Autopilot script not found, installing script"
             install-script -Name Get-WindowsAutoPilotInfo -force
             Write-Host "Executing Autopilot script"
