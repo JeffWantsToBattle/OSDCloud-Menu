@@ -39,7 +39,7 @@ Switch ($Select)
         Write-Host " *         OSDCloud        *"
         Write-Host " ***************************"
         Write-Host
-        Write-Host "Autopilot script not fout, installing script"
+        Write-Host "Autopilot script not found, installing script"
         install-script -Name Get-WindowsAutoPilotInfo -force
         Write-Host "Executing Autopilot script"
         Get-WindowsAutopilotInfo.ps1 -online
