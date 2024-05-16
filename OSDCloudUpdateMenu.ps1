@@ -50,7 +50,7 @@ if ($disk -eq $null) {
     Write-Host " 2.) Install/Update WinPE $versionWinPE < Testing"
     Write-Host " 3.) Update Powershell scripts"
     Write-Host " 4.) Download Windows 11 23H2 Retail"
-    Write-Host " 5.) Download Drivers (Menu)"
+    Write-Host " 5.) Download Drivers"
     Write-Host " Q.) Back"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
