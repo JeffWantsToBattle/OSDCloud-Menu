@@ -31,7 +31,7 @@ if ($disk -eq $null) {
         Write-Host
         cmd /c 'pause'
     } else {
-        Write-host " Updating OSDCloudUSB" -ForegroundColor Green
+        Write-host " Updating OSDCloudUSB to version $version" -ForegroundColor Green
         ###Write new version + error handeling
         try {
             Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
@@ -44,7 +44,7 @@ if ($disk -eq $null) {
             cmd /c 'pause'
         } else {
             New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
-            Write-host " Updating compleet" -ForegroundColor Green
+            Write-host " Updating compleet to version $version" -ForegroundColor Green
             Write-Host
             cmd /c 'pause'
         }
