@@ -28,7 +28,7 @@ if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
     Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
 } else {
-    Write-Host " OSDCloudUSB version " -nonewline
+    Write-Host " OSDCloudUSB " -nonewline
     if ($versionondisk -lt $version) {
         Write-Host "$versionondisk " -nonewline -ForegroundColor Red
         Write-Host "found on $disk"
@@ -36,7 +36,7 @@ if ($disk -eq $null) {
         Write-Host "$versionondisk " -nonewline -ForegroundColor green
         Write-Host "found on $disk"
     }
-    Write-Host " WinPE version " -nonewline
+    Write-Host " WinPE " -nonewline
     if ($versionWinPEondisk -lt $versionWinPE) {
         Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor Red
         Write-Host "found on $disk"
@@ -46,8 +46,8 @@ if ($disk -eq $null) {
     }
 }
     Write-Host
-    Write-Host " 1.) Update OSDCloudUSB to version $version"
-    Write-Host " 2.) Install/Update WinPE < Testing"
+    Write-Host " 1.) Update OSDCloudUSB to $version"
+    Write-Host " 2.) Install/Update WinPE $versionWinPE < Testing"
     Write-Host " 3.) Update Powershell scripts"
     Write-Host " 4.) Download Windows 11 23H2 Retail"
     Write-Host " 5.) Download Drivers (Menu)"
