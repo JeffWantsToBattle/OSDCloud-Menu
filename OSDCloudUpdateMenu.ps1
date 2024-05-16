@@ -46,7 +46,7 @@ if ($disk -eq $null) {
 }
     Write-Host
     Write-Host " 1.) Update OSDCloudUSB to version $version"
-    Write-Host " 2.) Update WinPE < Testing"
+    Write-Host " 2.) Install/Update WinPE < Testing"
     Write-Host " 3.) Update Powershell scripts"
     Write-Host " 4.) Download Windows 11 23H2 Retail"
     Write-Host " 5.) Download Drivers (Menu)"
