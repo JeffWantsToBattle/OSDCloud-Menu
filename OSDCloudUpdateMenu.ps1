@@ -1,10 +1,3 @@
-###Intro formatting
-Clear-Host
-Write-Host " ***************************"
-Write-Host " *   OSDCloud Update menu  *"
-Write-Host " ***************************"
-Write-Host
-
 ###Search OSDCloud disk
 $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
@@ -21,6 +14,11 @@ $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
 
 ###Check if OSDCloudUSB drive is found
 if ($disk -eq $null) {
+    Clear-Host
+    Write-Host " ***************************"
+    Write-Host " *   OSDCloud Update menu  *"
+    Write-Host " ***************************"
+    Write-Host
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
     Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
     Write-Host
