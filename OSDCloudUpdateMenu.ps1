@@ -10,10 +10,11 @@ $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select -Fi
 
 ###Getting OSDCloudUSB and WinPE version from drive
 $file = "Version.txt"
+$fileWinPE = "VersionWinPE.txt"
 $folder = 'OSDCloud\'
 $location = "$disk$folder"
 $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
-$versionWinPEondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
+$versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
 Clear-Host
 $MainMenu = {
