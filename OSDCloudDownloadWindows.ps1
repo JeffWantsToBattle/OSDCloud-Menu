@@ -24,9 +24,6 @@ $WinVerSelection = Read-Host " Select an option and press Enter"
 if ($WinVerSelection -eq 'Q') { 
      Return 
 } Else { 
-     Write-Host $Menu.$WinVerSelection
-     #Update-OSDCloudUSB -OSName "$Menu.$WinVerSelection" -OSLanguage nl-nl -OSLicense Retail
+     $WinVerSelection = $Menu.$WinVerSelection.Replace(" x64", "")
+     Update-OSDCloudUSB -OSName $WinVerSelection -OSLanguage nl-nl -OSLicense Retail
 }
-
-
-
