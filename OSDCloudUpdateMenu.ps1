@@ -68,7 +68,7 @@ if ($disk -eq $null) {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
         }
         2 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudWinPEUpdate.ps1'
+            New-OSDCloudUSB -fromIsoFile https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso
         }
         3 {
             Update-OSDCloudUSB -PSUpdate
