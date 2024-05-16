@@ -5,7 +5,7 @@ Write-Host " *       Update WinPE      *"
 Write-Host " ***************************"
 Write-Host
 
-###Getting version from .\Update\Version.txt
+###Getting version from .\Update\VersionWinPE.txt
 $versionWinPE = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/VersionWinPE.txt
 $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select -First 1
 
