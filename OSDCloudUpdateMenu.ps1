@@ -46,7 +46,7 @@ if ($disk -eq $null) {
     }
 }
     Write-Host
-    Write-Host " 1.) Update OSDCloudUSB to $version" -nonewline
+    Write-Host " 1.) Update OSDCloudUSB to" -nonewline
     Write-Host " $version" -ForegroundColor green
     Write-Host " 2.) Install WinPE" -nonewline
     Write-Host " $versionWinPE" -ForegroundColor green
