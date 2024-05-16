@@ -2,7 +2,6 @@ $json = Invoke-WebRequest 'https://raw.githubusercontent.com/JeffWantsToBattle/O
 $WinVer = $json | ForEach-Object { $_.OSNameValues }
 $winVer = $WinVer.Replace(" x64", "")
 $WinLang = $json | ForEach-Object { $_.OSLanguageValues }
-$Win
 
 Clear-Host
 Write-Host " ***************************"
