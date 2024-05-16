@@ -19,41 +19,29 @@ Write-Host " * WinPE Update or Install *"
 Write-Host " ***************************"
 Write-Host
 Write-Host " WinPE version " -nonewline
-    if ($versionondisk -lt $version) {
+    if ($versionWinPEondisk -lt $versionWinPE) {
         Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor Red
         Write-Host "found on $disk"
     } else {
         Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor green
         Write-Host "found on $disk"
     }
-Write-Host " 1.) "
-Write-Host " 2.) "
+Write-Host
+Write-Host " 1.) Start update/install"
 Write-Host " Q.) Back"
 Write-Host
 Write-Host " Select an option and press Enter: "  -nonewline
 }
 Clear-Host
 Do {
-Clear-Host
-Invoke-Command $MainMenu
-$Select = Read-Host
-Switch ($Select)
-    {
-    1 {
-        
-    }
-    2 {
-        
-    }
-    3 {
-        
-    }
-    4 {
-
-    }
-    5 {
-        
-    }
+    Clear-Host
+    Invoke-Command $MainMenu
+    $Select = Read-Host
+    Switch ($Select)
+        {
+        1 {
+           New-OSDCloudUSB -fromIsoFile https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso
+        }
     }
 }
 While ($Select -ne "Q")
