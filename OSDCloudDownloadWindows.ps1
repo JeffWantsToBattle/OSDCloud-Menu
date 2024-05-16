@@ -1,5 +1,6 @@
 $json = Invoke-WebRequest 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json' | ConvertFrom-Json
 $WinVer = $json | ForEach-Object { $_.OSNameValues }
+$winVer = $WinVer.Replace(" x64", "")
 $WinLang = $json | ForEach-Object { $_.OSLanguageValues }
 $Win
 
@@ -24,6 +25,5 @@ $WinVerSelection = Read-Host " Select an option and press Enter"
 if ($WinVerSelection -eq 'Q') { 
      Return 
 } Else { 
-     $WinVerSelection = $Menu.$WinVerSelection.Replace(" x64", "")
-     Update-OSDCloudUSB -OSName $WinVerSelection -OSLanguage nl-nl -OSLicense Retail
+     Update-OSDCloudUSB -OSName $Menu.$WinVerSelection -OSLanguage nl-nl -OSLicense Retail
 }
