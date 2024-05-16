@@ -51,7 +51,7 @@ if ($disk -eq $null) {
     Write-Host " 2.) Install WinPE" -nonewline
     Write-Host " $versionWinPE" -ForegroundColor green
     Write-Host " 3.) Update Powershell scripts"
-    Write-Host " 4.) Download Windows 11 23H2 Retail"
+    Write-Host " 4.) Download Windows"
     Write-Host " 5.) Download Drivers"
     Write-Host " Q.) Back"
     Write-Host
@@ -74,9 +74,7 @@ if ($disk -eq $null) {
             Update-OSDCloudUSB -PSUpdate
         }
         4 {
-            Update-OSDCloudUSB -OSName "Windows 11 23H2" -OSLanguage nl-nl -OSLicense Retail
-            #Get version from Json file and select in menu
-            #Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadWindows.ps1'
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadWindows.ps1'
         }
         5 {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadDriver.ps1'
