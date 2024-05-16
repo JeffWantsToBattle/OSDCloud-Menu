@@ -58,7 +58,7 @@ if ($disk -eq $null) {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
         }
         2 {
-            #New-OSDCloudUSB -fromIsoUrl "Blob URL"
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudWinPEUpdate.ps1'
         }
         3 {
             Update-OSDCloudUSB -PSUpdate
