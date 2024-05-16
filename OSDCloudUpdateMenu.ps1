@@ -75,9 +75,8 @@ if ($disk -eq $null) {
         }
         4 {
             Update-OSDCloudUSB -OSName "Windows 11 23H2" -OSLanguage nl-nl -OSLicense Retail
-            #Get possible versdions from Json file and select in menu
-            #$WinVersions = Invoke-WebRequest 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json' | ConvertFrom-Json
-            #$WinVersions = $WinVersions.OSNameValues
+            #Get version from Json file and select in menu
+            #Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadWindows.ps1'
         }
         5 {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadDriver.ps1'
