@@ -80,7 +80,7 @@ if ($disk -eq $null) {
             #$WinVersions = $WinVersions.OSNameValues
         }
         5 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDriverDownload.ps1'
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadDriver.ps1'
         }
         }
     }
