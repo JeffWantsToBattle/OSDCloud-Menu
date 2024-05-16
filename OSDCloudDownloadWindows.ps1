@@ -25,7 +25,8 @@ if ($WinVerSelection -eq 'Q') {
      Return 
 } Else { 
      Write-Host $Menu.$WinVerSelection
+     #Update-OSDCloudUSB -OSName "$Menu.$WinVerSelection" -OSLanguage nl-nl -OSLicense Retail
 }
 
 
-#Update-OSDCloudUSB -OSName "Windows 11 23H2" -OSLanguage nl-nl -OSLicense Retail
+
