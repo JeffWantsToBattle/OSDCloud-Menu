@@ -23,7 +23,7 @@ Write-Host " Q.) Back"
 $WinVerSelection = Read-Host " Select an option and press Enter"
 
 if ($WinVerSelection -eq 'Q') { 
-     Return 
+     Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudStartURL.ps1'
 } Else { 
      Update-OSDCloudUSB -OSName $Menu.$WinVerSelection -OSLanguage nl-nl -OSLicense Retail
 }
