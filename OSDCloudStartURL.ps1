@@ -32,9 +32,12 @@ Switch ($Select)
     4 {
         Clear-Host
         try {
+            Write-Host " ***************************"
+            Write-Host " *         Autopilot       *"
+            Write-Host " ***************************"
+            Write-Host
             Get-WindowsAutopilotInfo.ps1 -online
         } Catch {
-            Clear-Host
             Write-Host " ***************************"
             Write-Host " *         Autopilot       *"
             Write-Host " ***************************"
