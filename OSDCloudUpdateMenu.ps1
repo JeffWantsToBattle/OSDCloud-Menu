@@ -29,6 +29,7 @@ $MainMenu = {
         Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
     } else {
         Write-Host " OSDCloudUSB " -nonewline
+        ###Check if OSDCloudUSB version is lower then new version
         if ($versionondisk -lt $version) {
             Write-Host "$versionondisk " -nonewline -ForegroundColor Red
             Write-Host "found on $disk"
@@ -37,6 +38,7 @@ $MainMenu = {
             Write-Host "found on $disk"
         }
         Write-Host " WinPE " -nonewline
+        ###Check if WinPE version is lower then new version
         if ($versionWinPEondisk -lt $versionWinPE) {
             Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor Red
             Write-Host "found on $disk"
