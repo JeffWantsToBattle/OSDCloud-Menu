@@ -81,6 +81,9 @@ Do {
         5 {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadDriver.ps1'
         }
+        Q {
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudStart.ps1'
+        }
     }
 }
 While ($Select -ne "Q")
