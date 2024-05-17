@@ -23,6 +23,7 @@ $MainMenu = {
     Write-Host " From Windows"
     Write-Host " 4.) Autopilot"
     Write-Host " 5.) Install/Update OSDCloudUSB"
+    Write-Host
     Write-Host " Q.) Exit Menu"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
