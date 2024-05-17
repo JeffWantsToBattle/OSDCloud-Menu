@@ -7,9 +7,12 @@ Write-Host
 New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 New-Item -ItemType Directory -Path $location\Automate | Out-Null
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
 New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
 New-Item -Path $location -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -Force | Out-Null
 New-Item -Path $location -Name "Start-Menu.ps1" -ItemType "file" -Value "Start-Process powershell -Verb runAs "iex (irm osd.jevede.nl)"" -Force | Out-Null
+
+https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1
 
 
 $MainMenu = {
