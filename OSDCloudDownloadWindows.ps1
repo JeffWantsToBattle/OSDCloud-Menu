@@ -1,3 +1,4 @@
+###Getting Windows versions and language opties from "Start-OSDCloudGUI.json"
 $json = Invoke-WebRequest 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json' | ConvertFrom-Json
 $WinVer = $json | ForEach-Object { $_.OSNameValues }
 $winVer = $WinVer.Replace(" x64", "")
