@@ -2,6 +2,11 @@
 if (Get-InstalledModule -Name OSD -ErrorAction SilentlyContinue) {
     Import-Module OSD
 } else {
+    Write-Host " ***************************"
+    Write-Host " *         OSDCloud        *"
+    Write-Host " ***************************"
+    Write-Host
+    Write-Host " Installing OSDCloud Module"
     Install-Module OSD -force
 }
 
