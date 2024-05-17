@@ -1,5 +1,5 @@
 #Install OSDCloud module if not present
-if (Get-InstalledModule -Name OSD) {
+if (Get-InstalledModule -Name OSD -ErrorAction SilentlyContinue) {
     Import-Module OSD
 } else {
     Install-Module OSD -force
