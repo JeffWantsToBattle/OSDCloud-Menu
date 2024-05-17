@@ -49,7 +49,7 @@ if ($disk -eq $null) {
             Write-Host
             cmd /c 'pause'
         } else {
-            New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
+            New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force -ErrorAction SilentlyContinue | Out-Null
             Write-host " Updating compleet to version $version" -ForegroundColor Green
             Write-Host
             cmd /c 'pause'
