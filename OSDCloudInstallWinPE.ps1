@@ -18,11 +18,11 @@ $MainMenu = {
     Write-Host " ***************************"
     Write-Host
     Write-Host " WinPE Installation complete"
-    Write-Host " Install one more USB?"
+    Write-Host " Install one more WinPE to a USB drive?"
     Write-Host
-    Write-Host " 1.) Yes (Keeps ISO for next install)"
-    Write-Host " 2.) No (Delete ISO)"
-    Write-Host " Q.) Back (Keeps ISO in Download folder (Not recommanded))"
+    Write-Host " 1.) Yes (insert new USB drive before continuing)"
+    Write-Host " 2.) No (delete downloaded ISO)"
+    Write-Host " Q.) Back (keeps ISO in Download folder (not recommanded))"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
 }
