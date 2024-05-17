@@ -5,7 +5,7 @@ $WinLang = $json | ForEach-Object { $_.OSLanguageValues }
 
 Clear-Host
 Write-Host " ***************************"
-Write-Host " *         OSDCloud        *"
+Write-Host " * OSDCloud Offline Windows*"
 Write-Host " ***************************"
 Write-Host
 Write-Host " Select a Windows version:"
@@ -23,7 +23,7 @@ $WinVerSelection = Read-Host " Select an option and press Enter"
 
 Clear-Host
 Write-Host " ***************************"
-Write-Host " *         OSDCloud        *"
+Write-Host " * OSDCloud Offline Windows*"
 Write-Host " ***************************"
 Write-Host
 Write-Host " Select a Windows language:"
