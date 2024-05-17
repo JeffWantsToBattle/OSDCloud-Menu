@@ -15,15 +15,11 @@ $MainMenu = {
     Write-Host " *         OSDCloud        *"
     Write-Host " ***************************"
     Write-Host
-    Write-Host " From WinPE"
-    Write-Host " 1.) OSDCloud Local"
-    Write-Host " 2.) OSDCloud Azure"
-    Write-Host " 3.) OSDCloud Azure Sandbox"
-    Write-Host
-    Write-Host " From Windows"
-    Write-Host " 4.) Autopilot"
-    Write-Host " 5.) Install/Update OSDCloudUSB"
-    Write-Host
+    Write-Host " 1.) OSDCloud Local (WinPE)"
+    Write-Host " 2.) OSDCloud Azure (WinPE)"
+    Write-Host " 3.) OSDCloud Azure Sandbox (WinPE)"
+    Write-Host " 4.) Autopilot (Windows)"
+    Write-Host " 5.) Install/Update OSDCloudUSB (Windows)"
     Write-Host " Q.) Exit Menu"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
