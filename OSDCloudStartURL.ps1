@@ -1,4 +1,4 @@
-#set-disres 1600
+#Install OSDCloud module if not present
 if (Get-InstalledModule -Name OSD) {
     Import-Module OSD
 } else {
