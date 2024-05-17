@@ -51,7 +51,6 @@ Do {
             } Catch {
                 Write-Host "Autopilot script not found, installing script"
                 install-script -Name Get-WindowsAutoPilotInfo -Force | Out-Null
-                Write-Host "Executing Autopilot script"
                 Get-WindowsAutopilotInfo.ps1 -online
             }
         }
