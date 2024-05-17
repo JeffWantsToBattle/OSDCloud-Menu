@@ -71,6 +71,7 @@ if ($disk -eq $null) {
             New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
         }
         3 {
+            Clear-Host
             Update-OSDCloudUSB -PSUpdate
         }
         4 {
