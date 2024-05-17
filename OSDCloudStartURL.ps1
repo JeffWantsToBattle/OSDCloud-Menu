@@ -1,5 +1,10 @@
 #set-disres 1600
-install-module OSD -force
+if (Get-InstalledModule -Name OSD) {
+    Import-Module OSD
+} else {
+    Install-Module OSD -force
+}
+
 $MainMenu = {
 Write-Host " ***************************"
 Write-Host " *         OSDCloud        *"
