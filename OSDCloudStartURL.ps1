@@ -62,6 +62,8 @@ Do {
         5 {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
         }
+        Q {
+            Exit
+        }
     }
 }
-While ($Select -ne "Q")
