@@ -1,4 +1,4 @@
-#Install OSDCloud module if not present
+###Install OSDCloud module if not present
 if (Get-InstalledModule -Name OSD -ErrorAction SilentlyContinue) {
     Import-Module OSD
 } else {
