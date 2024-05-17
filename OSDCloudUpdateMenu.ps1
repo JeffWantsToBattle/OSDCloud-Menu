@@ -69,6 +69,8 @@ if ($disk -eq $null) {
         }
         2 {
             New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
+            New-Item -ItemType Directory -Path $location
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
         }
         3 {
             Clear-Host
