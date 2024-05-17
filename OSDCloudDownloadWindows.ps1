@@ -11,6 +11,7 @@ Write-Host " ***************************"
 Write-Host
 Write-Host " Select a Windows version:"
 
+###Listing Windows versions
 $MenuVer = @{}
 $WinVer | ForEach-Object -Begin {$i = 1} { 
      Write-Host " $i.) $_" 
@@ -29,6 +30,7 @@ Write-Host " ***************************"
 Write-Host
 Write-Host " Select a Windows language:"
 
+###Listing language opties
 $MenuLang = @{}
 $WinLang | ForEach-Object -Begin {$i = 1} { 
      Write-Host " $i.) $_" 
