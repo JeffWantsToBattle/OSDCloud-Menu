@@ -50,7 +50,7 @@ Do {
                 Get-WindowsAutopilotInfo.ps1 -online
             } Catch {
                 Write-Host "Autopilot script not found, installing script"
-                install-script -Name Get-WindowsAutoPilotInfo -Force | Out-Null
+                install-script -Name Get-WindowsAutoPilotInfo -Force
                 Get-WindowsAutopilotInfo.ps1 -online
             }
         }
