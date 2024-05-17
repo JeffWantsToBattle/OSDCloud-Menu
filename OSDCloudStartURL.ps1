@@ -54,7 +54,12 @@ Do {
                 Get-WindowsAutopilotInfo.ps1 -online
             } Catch {
                 Write-Host "Autopilot script not found, installing script"
-                install-script -Name Get-WindowsAutoPilotInfo -force
+                Install-Module Microsoft.graph.intune -Force -SkipPublisherCheck
+                Install-Module Microsoft.Graph.Groups -Force -SkipPublisherCheck
+                Install-Module microsoft.graph.authentication -Force -SkipPublisherCheck
+                Install-Module WindowsAutopilotIntune -Force -SkipPublisherCheck
+                Install-Module AzureAD -force -SkipPublisherCheck
+                install-script -Name Get-WindowsAutoPilotInfo -Force -SkipPublisherCheck
                 Write-Host "Executing Autopilot script"
                 Get-WindowsAutopilotInfo.ps1 -online
             }
