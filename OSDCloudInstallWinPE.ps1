@@ -38,7 +38,7 @@ Do {
         }
         2 {
             $ISOPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
-            Dismount-DiskImage -ImagePath "$ISOPath\OSDCloud_NoPrompt.iso"
+            Dismount-DiskImage -ImagePath "$ISOPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
             Remove-Item $ISOPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
         }
     }
