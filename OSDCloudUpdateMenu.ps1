@@ -52,7 +52,7 @@ $MainMenu = {
     Write-Host " $version" -ForegroundColor green
     Write-Host " 2.) Install WinPE" -nonewline
     Write-Host " $versionWinPE" -ForegroundColor green
-    Write-Host " 3.) Update Powershell scripts"
+    Write-Host " 3.) Update Powershell scripts < not Working witout Workspace"
     Write-Host " 4.) Download Windows"
     Write-Host " 5.) Download Drivers"
     Write-Host " Q.) Back"
@@ -69,13 +69,7 @@ Do {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
         }
         2 {
-            Clear-Host
-            New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
-            New-Item -ItemType Directory -Path $location\Automate | Out-Null
-            Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
-            New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force | Out-Null
-            New-Item -Path $location -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -Force | Out-Null
-            New-Item -Path $location -Name "Start-Menu.ps1" -ItemType "file" -Value "iex (irm osd.jevede.nl)" -Force | Out-Null
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudInstallWinPE.ps1'
         }
         3 {
             Clear-Host
