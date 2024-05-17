@@ -1,17 +1,27 @@
-###Intro formatting
+###Search OSDCloud disk
+$disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
+$disk = $disk.Name
+
+###Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
+$version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
+$version = $version.Content.Split([Environment]::NewLine) | Select -First 1
+$versionWinPE = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/VersionWinPE.txt
+$versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select -First 1
+
+###Getting OSDCloudUSB and WinPE version from drive
+$file = "Version.txt"
+$fileWinPE = "VersionWinPE.txt"
+$folder = 'OSDCloud\'
+$location = "$disk$folder"
+$versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
+$versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
+
+###Menu formatting
 Clear-Host
 Write-Host " ***************************"
 Write-Host " *    Update OSDCloudUSB   *"
 Write-Host " ***************************"
 Write-Host
-
-###Getting version from .\Update\Version.txt
-$version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
-$version = $version.Content.Split([Environment]::NewLine) | Select -First 1
-
-###Search OSDCloud disk
-$disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
-$disk = $disk.Name
 
 ###Check if OSDCloudUSB drive is found
 if ($disk -eq $null) {
@@ -20,11 +30,6 @@ if ($disk -eq $null) {
     Write-Host
     cmd /c 'pause'
 } else {
-    ###Getting version from OSDCloudUSB drive
-    $file = "Version.txt"
-    $folder = 'OSDCloud\'
-    $location = "$disk$folder"
-    $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
     ###Version check
     if ($versionondisk -eq $version){
         Write-host " OSDCloudUSB already updated to version $version" -ForegroundColor Green
