@@ -19,8 +19,8 @@ $MainMenu = {
     Write-Host " 1.) OSDCloud Local (WinPE)"
     Write-Host " 2.) OSDCloud Azure (WinPE)"
     Write-Host " 3.) OSDCloud Azure Sandbox (WinPE)"
-    Write-Host " 4.) Autopilot (Windows)"
-    Write-Host " 5.) Install/Update OSDCloudUSB (Windows)"
+    Write-Host " 4.) Install/Update OSDCloudUSB (Windows)"
+    Write-Host " 5.) Autopilot (Windows)"
     Write-Host " Q.) Exit Menu"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
@@ -42,6 +42,9 @@ Do {
             iex (irm az.osdcloud.com)
         }
         4 {
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
+        }
+        5 {
             Clear-Host
             Write-Host " ***************************"
             Write-Host " *         Autopilot       *"
@@ -56,9 +59,6 @@ Do {
                 install-script -Name Get-WindowsAutoPilotInfo -Force
                 Get-WindowsAutopilotInfo.ps1 -online
             }
-        }
-        5 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
         }
         Q {
             Exit
