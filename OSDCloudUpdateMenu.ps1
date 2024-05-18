@@ -1,6 +1,8 @@
-###Search OSDCloud disk
+###Search OSDCloud and WinPE disk
 $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
 $disk = $disk.Name
+$diskwinpe = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'WinPE' }
+$diskwinpe = $diskwinpe.Name
 
 ###Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
 $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
@@ -41,10 +43,10 @@ $MainMenu = {
         ###Check if WinPE version is lower then new version
         if ($versionWinPEondisk -lt $versionWinPE) {
             Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor Red
-            Write-Host "found on $disk"
+            Write-Host "found on $diskwinpe"
         } else {
             Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor green
-            Write-Host "found on $disk"
+            Write-Host "found on $diskwinpe"
         }
     }
     Write-Host
