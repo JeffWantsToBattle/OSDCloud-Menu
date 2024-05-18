@@ -47,6 +47,8 @@ Do {
             Write-Host " *         Autopilot       *"
             Write-Host " ***************************"
             Write-Host
+            Write-Host " A login window will open, login with an Autopilot authorized user account"
+            Write-Host
             try {
                 Get-WindowsAutopilotInfo.ps1 -online
             } Catch {
