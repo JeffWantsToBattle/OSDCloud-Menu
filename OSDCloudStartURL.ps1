@@ -7,6 +7,7 @@ if (Get-InstalledModule -Name OSD -ErrorAction SilentlyContinue) {
     Write-Host " ***************************"
     Write-Host
     Write-Host " Installing OSDCloud Module"
+    Write-Host
     Install-Module OSD -force
 }
 
