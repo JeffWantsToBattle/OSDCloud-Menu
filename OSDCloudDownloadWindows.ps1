@@ -43,7 +43,7 @@ Write-Host " Q.) Back"
 $WinLangSelection = Read-Host " Select an option and press Enter"
 
 if ($WinLangSelection -eq 'Q') { 
-     Return 
+     Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1' 
 } Else { 
      Clear-Host
      Update-OSDCloudUSB -OSName $MenuVer.$WinVerSelection -OSLanguage $menuLang.$WinLangSelection -OSLicense Retail
