@@ -23,6 +23,9 @@ Write-Host " Q.) Back"
 
 $WinVerSelection = Read-Host " Select an option and press Enter"
 
+if ($WinVerSelection -eq 'Q') { 
+     Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1' 
+} Else { 
 Clear-Host
 Write-Host " ***************************"
 Write-Host " * OSDCloud Offline Windows*"
@@ -42,9 +45,10 @@ Write-Host " Q.) Back"
 
 $WinLangSelection = Read-Host " Select an option and press Enter"
 
-if ($WinLangSelection or $WinVerSelection -eq 'Q') { 
+if ($WinLangSelection -eq 'Q') { 
      Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1' 
 } Else { 
      Clear-Host
      Update-OSDCloudUSB -OSName $MenuVer.$WinVerSelection -OSLanguage $menuLang.$WinLangSelection -OSLicense Retail
+}
 }
