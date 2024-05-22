@@ -59,7 +59,7 @@ $MainMenu = {
         Write-Host
         Write-Host " 1.) Install OSDCloudUSB (WinPE)" -nonewline
         Write-Host " $versionWinPE" -ForegroundColor green
-        Write-Host " 2.) Update OSDCloudUSB cofnig file to" -nonewline
+        Write-Host " 2.) Update OSDCloudUSB cofnig file" -nonewline
         Write-Host " $version" -ForegroundColor green
         Write-Host " 3.) Update Powershell scripts < not Working witout Workspace"
         Write-Host " 4.) Download Windows"
