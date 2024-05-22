@@ -29,6 +29,12 @@ $MainMenu = {
     if ($disk -eq $null) {
         Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
         Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
+        Write-Host
+        Write-Host " 1.) Install WinPE" -nonewline
+        Write-Host " $versionWinPE" -ForegroundColor green
+        Write-Host " Q.) Back"
+        Write-Host
+        Write-Host " Select an option and press Enter: "  -nonewline
     } else {
         Write-Host " OSDCloudUSB " -nonewline
         ###Check if OSDCloudUSB version is lower then new version
@@ -47,19 +53,19 @@ $MainMenu = {
         } else {
             Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor green
             Write-Host "found on $diskwinpe"
+                Write-Host
+                Write-Host " 1.) Install WinPE" -nonewline
+                Write-Host " $versionWinPE" -ForegroundColor green
+                Write-Host " 2.) Update OSDCloudUSB to" -nonewline
+                Write-Host " $version" -ForegroundColor green
+                Write-Host " 3.) Update Powershell scripts < not Working witout Workspace"
+                Write-Host " 4.) Download Windows"
+                Write-Host " 5.) Download Drivers"
+                Write-Host " Q.) Back"
+                Write-Host
+                Write-Host " Select an option and press Enter: "  -nonewline
         }
     }
-    Write-Host
-    Write-Host " 1.) Update OSDCloudUSB to" -nonewline
-    Write-Host " $version" -ForegroundColor green
-    Write-Host " 2.) Install WinPE" -nonewline
-    Write-Host " $versionWinPE" -ForegroundColor green
-    Write-Host " 3.) Update Powershell scripts < not Working witout Workspace"
-    Write-Host " 4.) Download Windows"
-    Write-Host " 5.) Download Drivers"
-    Write-Host " Q.) Back"
-    Write-Host
-    Write-Host " Select an option and press Enter: "  -nonewline
 }
 Clear-Host
 Do {
@@ -68,10 +74,10 @@ Do {
     $Select = Read-Host
     Switch ($Select) {
         1 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudInstallWinPE.ps1'
         }
         2 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudInstallWinPE.ps1'
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
         }
         3 {
             Clear-Host
