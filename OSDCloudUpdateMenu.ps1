@@ -23,7 +23,7 @@ $MainMenu = {
     Write-Host " ***************************"
     Write-Host " *         OSDCloud        *"
     Write-Host " ***************************"
-    Write-Host " ═"
+    Write-Host
     
     ### Check if OSDCloudUSB drive is found
     if ($disk -eq $null) {
