@@ -61,9 +61,8 @@ $MainMenu = {
         Write-Host " $versionWinPE" -ForegroundColor green
         Write-Host " 2.) Update OSDCloudUSB config file" -nonewline
         Write-Host " $version" -ForegroundColor green
-        Write-Host " 3.) Update Powershell scripts < not Working witout Workspace"
-        Write-Host " 4.) Download Windows"
-        Write-Host " 5.) Download Drivers"
+        Write-Host " 3.) Download Windows"
+        Write-Host " 4.) Download Drivers"
         Write-Host " Q.) Back"
         Write-Host
         Write-Host " Select an option and press Enter: "  -nonewline
@@ -82,13 +81,9 @@ Do {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUSBUpdate.ps1'
         }
         3 {
-            Clear-Host
-            Update-OSDCloudUSB -PSUpdate
-        }
-        4 {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadWindows.ps1'
         }
-        5 {
+        4 {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudDownloadDriver.ps1'
         }
         Q {
