@@ -30,7 +30,7 @@ $MainMenu = {
         Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
         Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
         Write-Host
-        Write-Host " 1.) Install WinPE" -nonewline
+        Write-Host " 1.) Install OSDCloudUSB (WinPE)" -nonewline
         Write-Host " $versionWinPE" -ForegroundColor green
         Write-Host " Q.) Back"
         Write-Host
@@ -54,9 +54,9 @@ $MainMenu = {
             Write-Host "$versionWinPEondisk " -nonewline -ForegroundColor green
             Write-Host "found on $diskwinpe"
                 Write-Host
-                Write-Host " 1.) Install WinPE" -nonewline
+                Write-Host " 1.) Install OSDCloudUSB (WinPE)" -nonewline
                 Write-Host " $versionWinPE" -ForegroundColor green
-                Write-Host " 2.) Update OSDCloudUSB to" -nonewline
+                Write-Host " 2.) Update OSDCloudUSB cofnig file to" -nonewline
                 Write-Host " $version" -ForegroundColor green
                 Write-Host " 3.) Update Powershell scripts < not Working witout Workspace"
                 Write-Host " 4.) Download Windows"
