@@ -6,7 +6,7 @@ Write-Host
 Write-Host " Downloading WinPE"
 Write-Host
 
-###Starting WinPE install from Azure Blob and writing the necessary files
+### Starting WinPE install from Azure Blob and writing the necessary files
 New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
@@ -40,7 +40,7 @@ Do {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudInstallWinPE.ps1'
         }
         2 {
-            ###Getting the active download folder, Dismounting the image (if mounted) and removing the ISO file
+            ### Getting the active download folder, Dismounting the image (if mounted) and removing the ISO file
             $ISOPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
             Dismount-DiskImage -ImagePath "$ISOPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
             Remove-Item $ISOPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
