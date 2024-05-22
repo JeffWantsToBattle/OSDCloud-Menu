@@ -20,10 +20,10 @@ $versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyCon
 
 Clear-Host
 $MainMenu = {
-    Write-Host " ╔═════════════════════════╗"
-    Write-Host " ║         OSDCloud        ║"
-    Write-Host " ╚═════════════════════════╝"
-    Write-Host
+    Write-Host " ***************************"
+    Write-Host " *         OSDCloud        *"
+    Write-Host " ***************************"
+    Write-Host " ═"
     
     ### Check if OSDCloudUSB drive is found
     if ($disk -eq $null) {
@@ -94,9 +94,9 @@ Do {
         Q {
             Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudStartURL.ps1'
         }
-#        R {
-#            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
-#        }
+        R {
+            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
+        }
     }
 }
 While ($Select -ne "Z")
