@@ -7,6 +7,7 @@ Write-Host " Downloading WinPE"
 Write-Host
 
 ### Starting WinPE install from Azure Blob and writing the necessary files
+### Catching arror for "New-OSDCloudUSB" not working, if it fails it wil go back to OSDCloudUpdateMenu.ps1.
 New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
