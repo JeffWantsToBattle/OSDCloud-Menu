@@ -10,10 +10,13 @@ Write-Host
 try {
     New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 } Catch {
+    ### If the installation fails, Getting the active download folder, Dismounting the image (if mounted) and removing the ISO file
+    $ISOPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
     Dismount-DiskImage -ImagePath "$ISOPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
     Remove-Item $ISOPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
     Write-host " An error occurred: $($_.Exception.Message)" -ForegroundColor Red
     cmd /c 'pause'
+    Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
 }
 New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
