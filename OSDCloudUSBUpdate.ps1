@@ -30,6 +30,7 @@ if ($disk -eq $null) {
             Write-Host
             cmd /c 'pause'
         } else {
+            Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1 -OutFile $disk\Start-Menu.ps1
             New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force -ErrorAction SilentlyContinue | Out-Null
             Write-host " Updating compleet to version $version" -ForegroundColor Green
             Write-Host
