@@ -5,6 +5,18 @@ Write-Host " ***************************"
 Write-Host 
 Write-Host " Downloading WinPE"
 Write-Host
+
+$testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype –eq ‘External hard disk media’ }
+if ( $testdisk -eq $null) {
+    Write-Host "No USB Drive found, going back to menu"
+    Write-Host
+    cmd /c 'pause'
+    Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'   
+} else {
+    Write-Host "USB Drive found"
+    Write-Host
+    cmd /c 'pause'
+} 
 ### Starting WinPE install from Azure Blob and writing the necessary files
 New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
