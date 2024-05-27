@@ -5,6 +5,7 @@ Write-Host " ***************************"
 Write-Host
 Write-Host " Downloading WinPE"
 Write-Host
+
 ### Starting WinPE install from Azure Blob and writing the necessary files
 New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
