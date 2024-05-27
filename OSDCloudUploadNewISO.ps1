@@ -6,7 +6,7 @@ $downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Down
 
 
 if (Test-Path -path $env:APPDATA\AzCopy\azcopy.exe -PathType Leaf){
-    ### Starting the AzCopy action
+    ### Starting the AzCopy action < test file = Test.txt
     Invoke-Expression "& '$env:APPDATA\AzCopy\azcopy.exe' login"
     try {
     Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$downloadsPath\Test.txt' https://jvdosd.blob.core.windows.net/bootimage/Test.txt" -ErrorAction SilentlyContinue | Out-Null
