@@ -3,8 +3,6 @@ Write-Host " ***************************"
 Write-Host " *    WinPE Installation   *"
 Write-Host " ***************************"
 Write-Host 
-Write-Host " Downloading WinPE"
-Write-Host
 
 $testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype –eq ‘External hard disk media’ }
 if ( $testdisk -eq $null) {
@@ -13,7 +11,7 @@ if ( $testdisk -eq $null) {
     cmd /c 'pause'
     Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'   
 } else {
-    Write-Host "USB Drive found"
+    Write-Host " Downloading WinPE"
     Write-Host
     cmd /c 'pause'
 } 
