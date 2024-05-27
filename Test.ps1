@@ -9,7 +9,7 @@ Write-Host " Downloading WinPE"
 Write-Host
 
 ### Test if any External hard disk media is fount
-$testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype -eq 'External hard disk media' }
+$testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype -eq 'Removable Media' -or $_.mediatype -eq 'Removable Media' }
 if ( $testdisk -eq $null) {
     Write-Host "No USB Drive found, going back to menu"
     Write-Host
