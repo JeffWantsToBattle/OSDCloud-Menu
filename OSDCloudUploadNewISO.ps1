@@ -1,6 +1,6 @@
 $downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
     Write-Host " ***************************"
-    Write-Host " *         OSDCloud        *"
+    Write-Host " *   OSDCloud ISO Upload   *"
     Write-Host " ***************************"
     Write-Host
 
