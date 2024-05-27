@@ -16,7 +16,7 @@ if ( $testdisk -eq $null) {
 } else {
     ### Starting WinPE install from Azure Blob and writing the necessary files
     New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
-    cmd /c 'pause'
+    
     ### Search OSDCloud disk after installation
     $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
     $disk = $disk.Name
