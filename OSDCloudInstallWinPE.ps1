@@ -2,7 +2,7 @@ Clear-Host
 Write-Host " ***************************"
 Write-Host " *    WinPE Installation   *"
 Write-Host " ***************************"
-Write-Host
+Write-Host 
 
 ### Test if any External hard disk media is fount
 $testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype –eq ‘External hard disk media’ }
