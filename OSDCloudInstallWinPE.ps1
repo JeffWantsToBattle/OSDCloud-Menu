@@ -2,20 +2,31 @@ Clear-Host
 Write-Host " ***************************"
 Write-Host " *    WinPE Installation   *"
 Write-Host " ***************************"
-Write-Host 
-
-$testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype –eq ‘External hard disk media’ }
-if ( $testdisk -eq $null) {
-    Write-Host "No USB Drive found, going back to menu"
-    Write-Host
-    cmd /c 'pause'
-    Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'   
-} else {
-    Write-Host " Downloading WinPE"
-    Write-Host
-} 
+Write-Host
+Write-Host " Downloading WinPE"
+Write-Host
 ### Starting WinPE install from Azure Blob and writing the necessary files
 New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
+
+### Search OSDCloud and WinPE disk
+$disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
+$disk = $disk.Name
+$diskwinpe = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'WinPE' }
+$diskwinpe = $diskwinpe.Name
+
+### Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
+$version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
+$version = $version.Content.Split([Environment]::NewLine) | Select -First 1
+$versionWinPE = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/VersionWinPE.txt
+$versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select -First 1
+
+### Getting OSDCloudUSB and WinPE version from drive
+$file = "Version.txt"
+$fileWinPE = "VersionWinPE.txt"
+$folder = 'OSDCloud\'
+$location = "$disk$folder"
+$versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
+$versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
 ### Creating files on de OSDCloud drive
 New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
