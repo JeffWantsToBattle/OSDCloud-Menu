@@ -44,7 +44,7 @@ if ( $testdisk -eq $null) {
     Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
     New-Item -Path "$location" -Name "$file" -ItemType "file" -Value $version -force -ErrorAction SilentlyContinue | Out-Null
     New-Item -Path "$location" -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -force -ErrorAction SilentlyContinue | Out-Null
-    New-Item -Path "$disk" -Name "Start-Menu.ps1" -ItemType "file" -Value "Start-Process powershell -Verb runAs 'iex (irm osd.jevede.nl)'" -force -ErrorAction SilentlyContinue | Out-Null
+    #New-Item -Path "$disk" -Name "Start-Menu.ps1" -ItemType "file" -Value "Start-Process powershell -Verb runAs 'iex (irm osd.jevede.nl)'" -force -ErrorAction SilentlyContinue | Out-Null
     
     $MainMenu = {
         Write-Host " ***************************"
