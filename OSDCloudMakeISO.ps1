@@ -4,10 +4,13 @@ Write-Host " ***************************"
 Write-Host
 
 $downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+$ADKURL = 'https://go.microsoft.com/fwlink/?linkid=2271337'
+$ADKAddonURL = 'https://go.microsoft.com/fwlink/?linkid=2271338'
+
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
     Write-host " Installing Windows ADK"
-    # Download adksetup.exe
+    Invoke-WebRequest $ADKURL -outfile $downloadsPath\adksetup.exe)
     Start-Process -NoNewWindow -FilePath "$downloadsPath\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart"
 } else {
     Write-host " Windows ADK already installed"
@@ -15,7 +18,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
 
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
-    # Download adkwinpesetup.exe
+    Invoke-WebRequest $ADKAddonURL -outfile $downloadsPath\adkwinpesetup.exe)
     Start-Process -NoNewWindow -FilePath "$downloadsPath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart"
     Write-host " Installing Windows ADK add-on"
 } else {
