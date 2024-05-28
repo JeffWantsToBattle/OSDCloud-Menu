@@ -43,14 +43,6 @@ if ( $testdisk -eq $null) {
     Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
     New-Item -Path "$location" -Name "$file" -ItemType "file" -Value $version -force -ErrorAction SilentlyContinue | Out-Null
     New-Item -Path "$location" -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -force -ErrorAction SilentlyContinue | Out-Null
-    
-    ### Creating Shotcut to start script
-    $WshShell = New-Object -comObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut("$disk\Start OSDCloud menu.lnk")
-    $Shortcut.TargetPath = '"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"'
-    $Shortcut.Arguments = ".\OSDCloud\Start-Menu.ps1"
-    $Shortcut.WorkingDirectory = '""'
-    $Shortcut.Save()
 
     $MainMenu = {
         Write-Host " ***************************"
