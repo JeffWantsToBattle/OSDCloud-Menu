@@ -6,9 +6,9 @@ $diskwinpe = $diskwinpe.Name
 
 ### Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
 $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
-$version = $version.Content.Split([Environment]::NewLine) | Select -First 1
+$version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
 $versionWinPE = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/VersionWinPE.txt
-$versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select -First 1
+$versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
 ### Getting OSDCloudUSB and WinPE version from drive
 $file = "Version.txt"
