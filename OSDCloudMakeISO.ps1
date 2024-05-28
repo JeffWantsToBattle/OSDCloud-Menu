@@ -47,7 +47,7 @@ $MainMenu = {
     Write-Host " *         OSDCloud        *"
     Write-Host " ***************************"
     Write-Host
-    Write-Host " 1.) Upload ISO to Azure Blob"
+    Write-Host " 1.) Upload ISO to Azure Blob < Not ready"
     Write-Host " 2.) Cleanup\Uninstall OSDCloud Workspace"
     Write-Host " Q.) Back"
     Write-Host
