@@ -7,8 +7,7 @@ Write-Host
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
     Write-host " Installing Windows ADK"
     # Download adksetup.exe
-    $ .\adksetup.exe /quiet /norestart /features OptionId.DeploymentTools /norestart
-    #or: Start-Process -NoNewWindow -FilePath ".\adksetup.exe" -ArgumentList "/quiet /installpath "C:\Program Files\ADK" /features OptionId.DeploymentTools /norestart"
+    Start-Process -NoNewWindow -FilePath ".\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart"
 } else {
     Write-host " Windows ADK already installed"
 }
@@ -16,8 +15,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
     # Download adkwinpesetup.exe
-    $ .\adkwinpesetup.exe /quiet /norestart
-    # or: Start-Process -NoNewWindow -FilePath ".\adkwinpesetup.exe" -ArgumentList "/quiet /norestart"
+    Start-Process -NoNewWindow -FilePath ".\adkwinpesetup.exe" -ArgumentList "/quiet /norestart"
     Write-host " Installing Windows ADK add-on"
 } else {
     Write-host " Windows ADK add-on already installed"
