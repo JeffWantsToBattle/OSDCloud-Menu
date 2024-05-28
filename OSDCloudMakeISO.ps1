@@ -12,15 +12,18 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
     Write-host " Installing Windows ADK"
     Invoke-WebRequest $ADKURL -outfile $DownloadsPath\adksetup.exe
     Start-Process -NoNewWindow -FilePath "$DownloadsPath\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart" -wait
+    Remove-Item -Path $DownloadsPath\adksetup.exe -Force -ErrorAction SilentlyContinue
 } else {
     Write-host " Windows ADK already installed"
 }
 
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
+        Write-host " Installing Windows ADK add-on"
     Invoke-WebRequest $ADKAddonURL -outfile $DownloadsPath\adkwinpesetup.exe
     Start-Process -NoNewWindow -FilePath "$DownloadsPath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart" -wait
-    Write-host " Installing Windows ADK add-on"
+    Remove-Item -Path $DownloadsPath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
+
 } else {
     Write-host " Windows ADK add-on already installed"
 }
@@ -65,13 +68,12 @@ Do {
             Invoke-WebPSScript $GitHubURL/OSDCloudUploadNewISO.ps1
         }
         2 {
+            Clear-host
             Write-Host " ***************************"
             Write-Host " *   OSDCloud ISO Maker    *"
             Write-Host " ***************************"
             Write-Host
-            Write-Host " Removing Files from Downloads and $WorkspaceLoc"
-            Remove-Item -Path $DownloadsPath\adksetup.exe -Force -ErrorAction SilentlyContinue
-            Remove-Item -Path $DownloadsPath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
+            Write-Host " Removing Files from $WorkspaceLoc"
             Remove-Item -Path $WorkspaceLoc -Force -Recurse -ErrorAction SilentlyContinue
             Write-Host
             Write-Host " Uninstalling ADK and ADK Add-on"
