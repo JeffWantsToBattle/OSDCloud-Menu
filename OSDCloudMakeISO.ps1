@@ -10,7 +10,7 @@ $LocOSDWorkspace = "C:\OSDCloud"
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
     Write-host " Installing Windows ADK"
-    Invoke-WebRequest $ADKURL -outfile $DownloadsPath\adksetup.exe)
+    Invoke-WebRequest $ADKURL -outfile $DownloadsPath\adksetup.exe
     Start-Process -NoNewWindow -FilePath "$DownloadsPath\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart" -wait
 } else {
     Write-host " Windows ADK already installed"
@@ -18,7 +18,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
 
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
-    Invoke-WebRequest $ADKAddonURL -outfile $DownloadsPath\adkwinpesetup.exe)
+    Invoke-WebRequest $ADKAddonURL -outfile $DownloadsPath\adkwinpesetup.exe
     Start-Process -NoNewWindow -FilePath "$DownloadsPath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart" -wait
     Write-host " Installing Windows ADK add-on"
 } else {
