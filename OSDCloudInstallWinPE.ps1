@@ -19,21 +19,10 @@ if ( $testdisk -eq $null) {
     ### Starting WinPE install from Azure Blob and writing the necessary files
     New-OSDCloudUSB -fromIsoUrl "$BlobISO"
     
+    ### Re-enter Variables that where set in OSDCloudUpdateMenu.ps1
     ### Search OSDCloud disk after installation
     $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
     $disk = $disk.Name
-    
-    ### Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
-    $version = Invoke-WebRequest -Uri "$GitHubURL/Update/Version.txt"
-    $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
-    $versionWinPE = Invoke-WebRequest -Uri "$GitHubURL/Update/VersionWinPE.txt"
-    $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
-    
-    ### Getting OSDCloudUSB and WinPE version from drive
-    $file = "Version.txt"
-    $fileWinPE = "VersionWinPE.txt"
-    $folder = 'OSDCloud\'
-    $location = "$disk$folder"
     
     ### Creating files on de OSDCloud drive
     New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null

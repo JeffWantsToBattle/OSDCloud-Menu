@@ -10,11 +10,12 @@ $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First
 $versionWinPE = Invoke-WebRequest -Uri $GitHubURL/Update/VersionWinPE.txt
 $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
-### Getting OSDCloudUSB and WinPE version from drive
+### Setting file names and location
 $file = "Version.txt"
 $fileWinPE = "VersionWinPE.txt"
 $folder = 'OSDCloud\'
 $location = "$disk$folder"
+### Getting OSDCloudUSB and WinPE versions from drive
 $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
 $versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
