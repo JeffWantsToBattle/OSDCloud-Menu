@@ -1,5 +1,6 @@
 ### Set the GitHub or other repository site, don't change the PowerShell script names
 $GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
+$BlobISO = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
 ### Install OSDCloud module if not present
 if (Get-InstalledModule -Name OSD) {
@@ -45,7 +46,7 @@ Do {
             iex (irm az.osdcloud.com)
         }
         4 {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
         }
         5 {
             Clear-Host

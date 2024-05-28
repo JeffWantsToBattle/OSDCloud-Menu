@@ -33,7 +33,7 @@ if (-Not (Get-OSDCloudWorkspace)) {
 
 ### Ready WinPE
 Edit-OSDCloudWinPE -CloudDriver *
-Edit-OSDCloudWinPE -StartURL "$GitHubURL/OSDCloudStartURL.ps1"
+Edit-OSDCloudWinPE -StartURL $GitHubURL/OSDCloudStartURL.ps1
 $downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
 copy "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" "$downloadsPath"
 Write-host " OSDCloud ISO created and copied to $downloadsPath"
@@ -63,7 +63,7 @@ Do {
             
         }
         Q {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
         }
     }
 }

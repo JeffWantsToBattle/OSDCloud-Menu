@@ -11,22 +11,22 @@ if ( $testdisk -eq $null) {
     Write-Host "No USB Drive found, going back to menu"
     Write-Host
     cmd /c 'pause'
-    Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'   
+    Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
 } else {
     Write-Host " Downloading WinPE"
     Write-Host
     
     ### Starting WinPE install from Azure Blob and writing the necessary files
-    New-OSDCloudUSB -fromIsoUrl 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
+    New-OSDCloudUSB -fromIsoUrl "$BlobISO"
     
     ### Search OSDCloud disk after installation
     $disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
     $disk = $disk.Name
     
     ### Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
-    $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
+    $version = Invoke-WebRequest -Uri "$GitHubURL/Update/Version.txt"
     $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
-    $versionWinPE = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/VersionWinPE.txt
+    $versionWinPE = Invoke-WebRequest -Uri "$GitHubURL/Update/VersionWinPE.txt"
     $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
     
     ### Getting OSDCloudUSB and WinPE version from drive
@@ -37,8 +37,8 @@ if ( $testdisk -eq $null) {
     
     ### Creating files on de OSDCloud drive
     New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
-    Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
-    Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
+    Invoke-WebRequest -Uri $GitHubURL/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
+    Invoke-WebRequest -Uri $GitHubURL/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
     New-Item -Path "$location" -Name "$file" -ItemType "file" -Value $version -force -ErrorAction SilentlyContinue | Out-Null
     New-Item -Path "$location" -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -force -ErrorAction SilentlyContinue | Out-Null
     
@@ -64,17 +64,17 @@ if ( $testdisk -eq $null) {
         Switch ($Select)
             {
             1 {
-                Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudInstallWinPE.ps1'
+                Invoke-WebPSScript $GitHubURL/OSDCloudInstallWinPE.ps1
             }
             2 {
                 ### Getting the active download folder, Dismounting the image (if mounted) and removing the ISO file
                 $downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
                 Dismount-DiskImage -ImagePath "$downloadsPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
                 Remove-Item $downloadsPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
-                Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
+                Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
             }
             Q {
-                Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
+                Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
             }
         }       
     }

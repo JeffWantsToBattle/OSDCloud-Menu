@@ -5,9 +5,9 @@ $diskwinpe = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'WinPE' }
 $diskwinpe = $diskwinpe.Name
 
 ### Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
-$version = Invoke-WebRequest -Uri "$GitHubURL/Update/Version.txt"
+$version = Invoke-WebRequest -Uri $GitHubURL/Update/Version.txt
 $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
-$versionWinPE = Invoke-WebRequest -Uri "$GitHubURL/Update/VersionWinPE.txt"
+$versionWinPE = Invoke-WebRequest -Uri $GitHubURL/Update/VersionWinPE.txt
 $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
 ### Getting OSDCloudUSB and WinPE version from drive
@@ -75,22 +75,22 @@ Do {
     $Select = Read-Host
     Switch ($Select) {
         1 {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudInstallWinPE.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudInstallWinPE.ps1
         }
         2 {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudUSBUpdate.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudUSBUpdate.ps1
         }
         3 {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudDownloadWindows.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudDownloadWindows.ps1
         }
         4 {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudDownloadDriver.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudDownloadDriver.ps1
         }
         Q {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudStartURL.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudStartURL.ps1
         }
         R {
-            Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
+            Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
         }
     }
 }
