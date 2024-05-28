@@ -5,7 +5,7 @@ Write-Host " ***************************"
 Write-Host
 
 ### Test if any USB drive is fount
-$testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype -eq 'Removable Media' -or $_.mediatype -eq 'Removable Media' -or $_.InterfaceType -eq 'USB' }
+$testdisk = GET-WMIOBJECT win32_diskdrive | Where-Object { $_.mediatype -eq 'Removable Media' -or $_.mediatype -eq 'Removable Media' -or $_.InterfaceType -eq 'USB' }
 #Option 2: $testdisk2 = Get-Disk | Where-Object -FilterScript {$_.Bustype -Eq "USB"}
 if ( $testdisk -eq $null) {
     Write-Host "No USB Drive found, going back to menu"
@@ -25,17 +25,15 @@ if ( $testdisk -eq $null) {
     
     ### Getting version from .\Update\Version.txt and .\Update\VersionWinPE.txt
     $version = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Version.txt
-    $version = $version.Content.Split([Environment]::NewLine) | Select -First 1
+    $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
     $versionWinPE = Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/VersionWinPE.txt
-    $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select -First 1
+    $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
     
     ### Getting OSDCloudUSB and WinPE version from drive
     $file = "Version.txt"
     $fileWinPE = "VersionWinPE.txt"
     $folder = 'OSDCloud\'
     $location = "$disk$folder"
-    $versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
-    $versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
     
     ### Creating files on de OSDCloud drive
     New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
@@ -43,7 +41,7 @@ if ( $testdisk -eq $null) {
     Invoke-WebRequest -Uri https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
     New-Item -Path "$location" -Name "$file" -ItemType "file" -Value $version -force -ErrorAction SilentlyContinue | Out-Null
     New-Item -Path "$location" -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -force -ErrorAction SilentlyContinue | Out-Null
-
+    
     $MainMenu = {
         Write-Host " ***************************"
         Write-Host " *    WinPE Installation   *"
