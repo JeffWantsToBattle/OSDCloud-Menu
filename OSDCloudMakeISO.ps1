@@ -28,7 +28,7 @@ $LocOSDWorkspace = "C:\OSDCloud"
 if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " Making new OSDCloud Template/Workspace"
     New-OSDCloudTemplate
-    New-OSDCloudWorkspace ($LocOSDWorkspace)
+    New-OSDCloudWorkspace "$LocOSDWorkspace"
     $WorkspaceLoc = Get-OSDCloudWorkspace
     Write-host " Workspace created, location: $WorkspaceLoc"
 } else {
