@@ -42,8 +42,7 @@ if (-Not (Get-OSDCloudWorkspace)) {
 }
 
 ### Configure WinPE
-Edit-OSDCloudWinPE -CloudDriver *
-Edit-OSDCloudWinPE -StartURL $GitHubURL/OSDCloudStartURL.ps1
+Edit-OSDCloudWinPE -CloudDriver * -StartURL $GitHubURL/OSDCloudStartURL.ps1
 Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath"
 Write-host " OSDCloud ISO created and copied to $DownloadsPath"
 
