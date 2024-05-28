@@ -3,23 +3,27 @@ $LocOSDWorkspace = "C:\OSDCloud"
 $GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
 
 ### Install Windows ADK
-if (-Not (Windows ADK is installed)) {
+if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
     Write-host " Installing Windows ADK"
-    $ .\adksetup.exe /quiet /installpath c:\ADK /features OptionId.DeploymentTools /norestart
+    # Download adksetup.exe
+    $ .\adksetup.exe /quiet /norestart /features OptionId.DeploymentTools /norestart
     #or: Start-Process -NoNewWindow -FilePath ".\adksetup.exe" -ArgumentList "/quiet /installpath "C:\Program Files\ADK" /features OptionId.DeploymentTools /norestart"
 } else {
     Write-host " Windows ADK already installed"
 }
 
 ### Install Windows ADK add-on
-f (-Not (Windows ADK add-on is installed)) {
+if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
+    # Download adkwinpesetup.exe
+    $ .\adkwinpesetup.exe /quiet /norestart
+    # or: Start-Process -NoNewWindow -FilePath ".\adkwinpesetup.exe" -ArgumentList "/quiet /norestart"
     Write-host " Installing Windows ADK add-on"
 } else {
     Write-host " Windows ADK add-on already installed"
 }
 
 ### Starting OSDCloud configuration
-###Creating OSDCloud Workspace
+### Creating OSDCloud Workspace
 if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " Making new OSDCloud Template/Workspace"
     New-OSDCloudTemplate
@@ -44,7 +48,7 @@ $MainMenu = {
     Write-Host " ***************************"
     Write-Host
     Write-Host " 1.) Upload ISO to Azure Blob"
-    Write-Host " 2.) "
+    Write-Host " 2.) Cleanup\Uninstall OSDCloud Workspace"
     Write-Host " Q.) Back"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
@@ -57,7 +61,7 @@ Do {
     Switch ($Select)
         {
         1 {
-            
+            Invoke-WebPSScript $GitHubURL/OSDCloudUploadNewISO.ps1
         }
         2 {
             
