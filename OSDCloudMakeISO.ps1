@@ -1,11 +1,11 @@
+$ADKURL = 'https://go.microsoft.com/fwlink/?linkid=2271337'
+$ADKAddonURL = 'https://go.microsoft.com/fwlink/?linkid=2271338'
+$NewOSDWorkspace = "C:\OSDCloud"
+
 Write-Host " ***************************"
 Write-Host " *   OSDCloud ISO Maker    *"
 Write-Host " ***************************"
 Write-Host
-
-$ADKURL = 'https://go.microsoft.com/fwlink/?linkid=2271337'
-$ADKAddonURL = 'https://go.microsoft.com/fwlink/?linkid=2271338'
-$LocOSDWorkspace = "C:\OSDCloud"
 
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
@@ -32,7 +32,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit 
 if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " Making new OSDCloud Template/Workspace"
     New-OSDCloudTemplate
-    New-OSDCloudWorkspace "$LocOSDWorkspace"
+    New-OSDCloudWorkspace "$NewOSDWorkspace"
     $WorkspaceLoc = Get-OSDCloudWorkspace
     Write-host " Workspace created, location: $WorkspaceLoc"
 } else {
@@ -43,7 +43,7 @@ if (-Not (Get-OSDCloudWorkspace)) {
 ### Configure WinPE
 Edit-OSDCloudWinPE -CloudDriver *
 Edit-OSDCloudWinPE -StartURL $GitHubURL/OSDCloudStartURL.ps1
-Copy-Item "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath"
+Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath"
 Write-host " OSDCloud ISO created and copied to $DownloadsPath"
 
 $MainMenu = {
