@@ -24,7 +24,7 @@ $MainMenu = {
     Write-Host " 3.) OSDCloud Azure Sandbox (WinPE)"
     Write-Host " 4.) Install/Update OSDCloudUSB (Windows)"
     Write-Host " 5.) Autopilot (Windows)"
-    Write-Host " Q.) Exit Menu"
+    Write-Host " Q.) Exit Powershell"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
 }
