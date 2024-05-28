@@ -68,9 +68,9 @@ if ( $testdisk -eq $null) {
             }
             2 {
                 ### Getting the active download folder, Dismounting the image (if mounted) and removing the ISO file
-                $ISOPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
-                Dismount-DiskImage -ImagePath "$ISOPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
-                Remove-Item $ISOPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
+                $downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+                Dismount-DiskImage -ImagePath "$downloadsPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
+                Remove-Item $downloadsPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
                 Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
             }
             Q {

@@ -1,7 +1,70 @@
+### Some variables
+$LocOSDWorkspace = "C:\OSDCloud"
+$GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
+
 ### Install Windows ADK
-$ .\adksetup.exe /quiet /installpath c:\ADK /features OptionId.DeploymentTools /norestart
-#or
-Start-Process -NoNewWindow -FilePath ".\adksetup.exe" -ArgumentList "/quiet /installpath c:\ADK /features OptionId.DeploymentTools /norestart"
+if (-Not (Windows ADK is installed)) {
+    Write-host " Installing Windows ADK"
+    $ .\adksetup.exe /quiet /installpath c:\ADK /features OptionId.DeploymentTools /norestart
+    #or: Start-Process -NoNewWindow -FilePath ".\adksetup.exe" -ArgumentList "/quiet /installpath "C:\Program Files\ADK" /features OptionId.DeploymentTools /norestart"
+} else {
+    Write-host " Windows ADK already installed"
+}
 
 ### Install Windows ADK add-on
+f (-Not (Windows ADK add-on is installed)) {
+    Write-host " Installing Windows ADK add-on"
+} else {
+    Write-host " Windows ADK add-on already installed"
+}
 
+### Starting OSDCloud configuration
+###Creating OSDCloud Workspace
+if (-Not (Get-OSDCloudWorkspace)) {
+    Write-host " Making new OSDCloud Template/Workspace"
+    New-OSDCloudTemplate
+    New-OSDCloudWorkspace ($LocOSDWorkspace)
+    $WorkspaceLoc = Get-OSDCloudWorkspace
+    Write-host " Workspace created, location: $WorkspaceLoc"
+} else {
+    $WorkspaceLoc = Get-OSDCloudWorkspace
+    Write-host " OSDCloud Workspace already set up, location: $WorkspaceLoc "
+}
+
+### Ready WinPE
+Edit-OSDCloudWinPE -CloudDriver *
+Edit-OSDCloudWinPE -StartURL "$GitHubURL/OSDCloudStartURL.ps1"
+$downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+copy "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" "$downloadsPath"
+Write-host " OSDCloud ISO created and copied to $downloadsPath"
+
+$MainMenu = {
+    Write-Host " ***************************"
+    Write-Host " *         OSDCloud        *"
+    Write-Host " ***************************"
+    Write-Host
+    Write-Host " 1.) Upload ISO to Azure Blob"
+    Write-Host " 2.) "
+    Write-Host " Q.) Back"
+    Write-Host
+    Write-Host " Select an option and press Enter: "  -nonewline
+}
+Clear-Host
+Do {
+    Clear-Host
+    Invoke-Command $MainMenu
+    $Select = Read-Host
+    Switch ($Select)
+        {
+        1 {
+            
+        }
+        2 {
+            
+        }
+        Q {
+            Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
+        }
+    }
+}
+While ($Select -ne "Z")

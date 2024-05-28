@@ -1,6 +1,8 @@
+### Set the GitHub or other repository site, don't change the PowerShell script names
+$GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
+
 ### Install OSDCloud module if not present
-if (Get-InstalledModule -Name OSD -ErrorAction SilentlyContinue) {
-    #Import-Module OSD < slows down the script
+if (Get-InstalledModule -Name OSD) {
     Write-Host " OSDCloud Module already installed"
 } else {
     Write-Host " ***************************"
@@ -43,7 +45,7 @@ Do {
             iex (irm az.osdcloud.com)
         }
         4 {
-            Invoke-WebPSScript 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main/OSDCloudUpdateMenu.ps1'
+            Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
         }
         5 {
             Clear-Host
