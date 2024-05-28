@@ -1,3 +1,4 @@
+### ADK and ADK Add-on Download URL and preferd Workspace location
 $ADKURL = 'https://go.microsoft.com/fwlink/?linkid=2271337'
 $ADKAddonURL = 'https://go.microsoft.com/fwlink/?linkid=2271338'
 $NewOSDWorkspace = "C:\OSDCloud"
