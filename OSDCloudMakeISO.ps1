@@ -3,11 +3,12 @@ Write-Host " *   OSDCloud ISO Maker    *"
 Write-Host " ***************************"
 Write-Host
 
+$downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
     Write-host " Installing Windows ADK"
     # Download adksetup.exe
-    Start-Process -NoNewWindow -FilePath ".\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart"
+    Start-Process -NoNewWindow -FilePath "$downloadsPath\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart"
 } else {
     Write-host " Windows ADK already installed"
 }
@@ -15,7 +16,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
     # Download adkwinpesetup.exe
-    Start-Process -NoNewWindow -FilePath ".\adkwinpesetup.exe" -ArgumentList "/quiet /norestart"
+    Start-Process -NoNewWindow -FilePath "$downloadsPath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart"
     Write-host " Installing Windows ADK add-on"
 } else {
     Write-host " Windows ADK add-on already installed"
@@ -38,7 +39,7 @@ if (-Not (Get-OSDCloudWorkspace)) {
 ### Ready WinPE
 Edit-OSDCloudWinPE -CloudDriver *
 Edit-OSDCloudWinPE -StartURL $GitHubURL/OSDCloudStartURL.ps1
-$downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+
 copy "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" "$downloadsPath"
 Write-host " OSDCloud ISO created and copied to $downloadsPath"
 
