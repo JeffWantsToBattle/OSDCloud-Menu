@@ -46,7 +46,7 @@ if ( $testdisk -eq $null) {
     
     ### Creating Shotcut to start script
     $WshShell = New-Object -comObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut("$disk\OSDCloud menu starten.lnk")
+    $Shortcut = $WshShell.CreateShortcut("$disk\Start OSDCloud menu.lnk")
     $Shortcut.TargetPath = '"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"'
     $Shortcut.Arguments = ".\OSDCloud\Start-Menu.ps1"
     $Shortcut.WorkingDirectory = '""'
