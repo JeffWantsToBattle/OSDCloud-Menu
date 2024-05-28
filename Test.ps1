@@ -8,6 +8,7 @@ Write-Host
 
 ### Test if any USB drive is fount
 $testdisk = GET-WMIOBJECT win32_diskdrive | Where { $_.mediatype -eq 'Removable Media' -or $_.mediatype -eq 'Removable Media' -or $_.InterfaceType -eq 'USB' }
+#Option 2: $testdisk2 = Get-Disk | Where-Object -FilterScript {$_.Bustype -Eq "USB"}
 if ( $testdisk -eq $null) {
     Write-Host "No USB Drive found, going back to menu"
     Write-Host
