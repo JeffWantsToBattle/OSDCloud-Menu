@@ -1,4 +1,4 @@
-### Set the GitHub or other repository site, don't change the PowerShell script names
+### Set the repository and ISO download link
 $GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
 $BlobISO = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 

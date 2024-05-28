@@ -18,9 +18,8 @@ $WinVer | ForEach-Object -Begin {$i = 1} {
      $MenuVer.add("$i",$_)
      $i++
 }
-
 Write-Host " Q.) Back"
-
+Write-Host
 $WinVerSelection = Read-Host " Select an option and press Enter: "
 
 if ($WinVerSelection -eq 'Q') { 
@@ -40,9 +39,8 @@ $WinLang | ForEach-Object -Begin {$i = 1} {
      $MenuLang.add("$i",$_)
      $i++
 }
-
 Write-Host " Q.) Back"
-
+Write-Host
 $WinLangSelection = Read-Host " Select an option and press Enter: "
 
 if ($WinLangSelection -eq 'Q') { 
