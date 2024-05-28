@@ -5,6 +5,7 @@ Write-Host
 
 $ADKURL = 'https://go.microsoft.com/fwlink/?linkid=2271337'
 $ADKAddonURL = 'https://go.microsoft.com/fwlink/?linkid=2271338'
+$LocOSDWorkspace = "C:\OSDCloud"
 
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
@@ -24,9 +25,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit 
     Write-host " Windows ADK add-on already installed"
 }
 
-### Starting OSDCloud configuration
 ### Creating OSDCloud Workspace
-$LocOSDWorkspace = "C:\OSDCloud"
 if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " Making new OSDCloud Template/Workspace"
     New-OSDCloudTemplate
@@ -38,7 +37,7 @@ if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " OSDCloud Workspace already set up, location: $WorkspaceLoc "
 }
 
-### Ready WinPE
+### Configure WinPE
 Edit-OSDCloudWinPE -CloudDriver *
 Edit-OSDCloudWinPE -StartURL $GitHubURL/OSDCloudStartURL.ps1
 Copy-Item "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath"
@@ -50,7 +49,7 @@ $MainMenu = {
     Write-Host " ***************************"
     Write-Host
     Write-Host " 1.) Upload ISO to Azure Blob < Not ready"
-    Write-Host " 2.) Cleanup\Uninstall OSDCloud Workspace"
+    Write-Host " 2.) Cleanup Workspace, downloaded files and software"
     Write-Host " Q.) Back"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
@@ -70,12 +69,17 @@ Do {
             Write-Host " *   OSDCloud ISO Maker    *"
             Write-Host " ***************************"
             Write-Host
-            Write-Host " Removing Files from Downloads folder"
+            Write-Host " Removing Files from Downloads and $WorkspaceLoc"
             Remove-Item -Path $DownloadsPath\adksetup.exe -Force -ErrorAction SilentlyContinue
             Remove-Item -Path $DownloadsPath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
+            Remove-Item -Path $WorkspaceLoc -Force -Recurse -ErrorAction SilentlyContinue
+            Write-Host
             Write-Host " Uninstalling ADK and ADK Add-on"
             get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons" | Uninstall-Package -Force -ErrorAction SilentlyContinue
             get-package | where Name -Like "Windows Assessment and Deployment Kit" | Uninstall-Package -Force -ErrorAction SilentlyContinue
+            Write-Host
+            Write-Host " Cleanup completed"
+            Write-Host
             cmd /c 'pause'
         }
         Q {
