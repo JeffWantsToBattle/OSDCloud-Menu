@@ -39,8 +39,7 @@ if (-Not (Get-OSDCloudWorkspace)) {
 ### Ready WinPE
 Edit-OSDCloudWinPE -CloudDriver *
 Edit-OSDCloudWinPE -StartURL $GitHubURL/OSDCloudStartURL.ps1
-
-copy "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" "$downloadsPath"
+Copy-Item "$LocOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$downloadsPath"
 Write-host " OSDCloud ISO created and copied to $downloadsPath"
 
 $MainMenu = {
