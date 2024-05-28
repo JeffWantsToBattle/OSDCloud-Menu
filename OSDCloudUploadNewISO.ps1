@@ -1,4 +1,4 @@
-$downloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+$DownloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
     Write-Host " ***************************"
     Write-Host " *   OSDCloud ISO Upload   *"
     Write-Host " ***************************"
@@ -9,7 +9,7 @@ if (Test-Path -path $env:APPDATA\AzCopy\azcopy.exe -PathType Leaf){
     ### Starting the AzCopy action < test file = Test.txt
     Invoke-Expression "& '$env:APPDATA\AzCopy\azcopy.exe' login"
     try {
-    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$downloadsPath\Test.txt' https://jvdosd.blob.core.windows.net/bootimage/Test.txt" -ErrorAction SilentlyContinue | Out-Null
+    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$DownloadsPath\Test.txt' https://jvdosd.blob.core.windows.net/bootimage/Test.txt" -ErrorAction SilentlyContinue | Out-Null
     } catch {
         Write-Host " Error"
         cmd /c 'pause'

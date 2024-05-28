@@ -10,7 +10,8 @@ $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First
 $versionWinPE = Invoke-WebRequest -Uri $GitHubURL/Update/VersionWinPE.txt
 $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
-### Setting file names and location
+### Setting file names and locations
+$DownloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
 $file = "Version.txt"
 $fileWinPE = "VersionWinPE.txt"
 $folder = 'OSDCloud\'
