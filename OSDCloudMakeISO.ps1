@@ -1,6 +1,7 @@
-### Some variables
-$LocOSDWorkspace = "C:\OSDCloud"
-$GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
+Write-Host " ***************************"
+Write-Host " *   OSDCloud ISO Maker    *"
+Write-Host " ***************************"
+Write-Host
 
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
@@ -24,6 +25,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit 
 
 ### Starting OSDCloud configuration
 ### Creating OSDCloud Workspace
+$LocOSDWorkspace = "C:\OSDCloud"
 if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " Making new OSDCloud Template/Workspace"
     New-OSDCloudTemplate
@@ -44,7 +46,7 @@ Write-host " OSDCloud ISO created and copied to $downloadsPath"
 
 $MainMenu = {
     Write-Host " ***************************"
-    Write-Host " *         OSDCloud        *"
+    Write-Host " *   OSDCloud ISO Maker    *"
     Write-Host " ***************************"
     Write-Host
     Write-Host " 1.) Upload ISO to Azure Blob < Not ready"
@@ -64,7 +66,10 @@ Do {
             Invoke-WebPSScript $GitHubURL/OSDCloudUploadNewISO.ps1
         }
         2 {
-            
+            Write-Host
+            Write-Host " Option not ready"
+            Write-Host
+            cmd /c 'pause'
         }
         Q {
             Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
