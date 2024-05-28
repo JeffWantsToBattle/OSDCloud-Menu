@@ -66,9 +66,16 @@ Do {
             Invoke-WebPSScript $GitHubURL/OSDCloudUploadNewISO.ps1
         }
         2 {
+            Write-Host " ***************************"
+            Write-Host " *   OSDCloud ISO Maker    *"
+            Write-Host " ***************************"
             Write-Host
-            Write-Host " Option not ready"
-            Write-Host
+            Write-Host " Removing Files from Downloads folder"
+            Remove-Item -Path $DownloadsPath\adksetup.exe -Force -ErrorAction SilentlyContinue
+            Remove-Item -Path $DownloadsPath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
+            Write-Host " Uninstalling ADK and ADK Add-on"
+            get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons" | Uninstall-Package -Force -ErrorAction SilentlyContinue
+            get-package | where Name -Like "Windows Assessment and Deployment Kit" | Uninstall-Package -Force -ErrorAction SilentlyContinue
             cmd /c 'pause'
         }
         Q {
