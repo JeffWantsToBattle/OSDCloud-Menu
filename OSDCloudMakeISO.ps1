@@ -42,9 +42,15 @@ if (-Not (Get-OSDCloudWorkspace)) {
     Write-host " OSDCloud Workspace already set up, location: $WorkspaceLoc "
 }
 
+### Cleanup WinPE folders
+$KeepTheseDirs = @('boot','efi','en-us','nl-nl','sources','fonts','resources')
+Get-ChildItem $WorkspaceLoc\Media | Where {$_.PSIsContainer} | Where {$_.Name -notin $KeepTheseDirs} | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+Get-ChildItem $WorkspaceLoc\Media\Boot | Where {$_.PSIsContainer} | Where {$_.Name -notin $KeepTheseDirs} | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+Get-ChildItem $WorkspaceLoc\Media\EFI\Microsoft\Boot | Where {$_.PSIsContainer} | Where {$_.Name -notin $KeepTheseDirs} | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+
 ### Configure WinPE
 Edit-OSDCloudWinPE -CloudDriver * -StartURL $GitHubURL/OSDCloudStartURL.ps1
-Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath"
+Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath" -ErrorAction SilentlyContinue
 Write-host " OSDCloud ISO created and copied to $DownloadsPath"
 
 $MainMenu = {
@@ -52,7 +58,7 @@ $MainMenu = {
     Write-Host " *   OSDCloud ISO Maker    *"
     Write-Host " ***************************"
     Write-Host
-    Write-Host " 1.) Upload ISO to Azure Blob < Not ready"
+    Write-Host " 1.) Upload ISO to Azure Blob < testing"
     Write-Host " 2.) Cleanup Workspace, downloaded files and software"
     Write-Host " Q.) Back"
     Write-Host
