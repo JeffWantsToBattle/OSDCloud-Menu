@@ -5,14 +5,10 @@ $diskwinpe = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'WinPE' }
 $diskwinpe = $diskwinpe.Name
 
 ### Getting version from GitHub .\Update\Version.txt and .\Update\VersionWinPE.txt
-$version = Invoke-WebRequest -Uri $GitHubURL/Update/Version.txt
+$version = Invoke-WebRequest -Uri "$GitHubURL/Update/Version.txt"
 $version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
 $versionWinPE = Invoke-WebRequest -Uri $GitHubURL/Update/VersionWinPE.txt
 $versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
-
-### Getting versions from USB drive
-$versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
-$versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
 ### Setting file names and locations
 $DownloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
@@ -20,6 +16,10 @@ $file = "Version.txt"
 $fileWinPE = "VersionWinPE.txt"
 $folder = 'OSDCloud\'
 $location = "$disk$folder"
+
+### Getting versions from USB drive
+$versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
+$versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
 Clear-Host
 $MainMenu = {
