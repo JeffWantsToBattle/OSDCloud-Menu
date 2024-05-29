@@ -1,26 +1,36 @@
-$DownloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
-    Write-Host " ***************************"
-    Write-Host " *   OSDCloud ISO Upload   *"
-    Write-Host " ***************************"
+Clear-host
+Write-Host " ***************************"
+Write-Host " *   OSDCloud ISO Upload   *"
+Write-Host " ***************************"
+Write-Host
+
+### Check if AZCopy is installed
+if (-NOT ((Test-Path -path $env:APPDATA\AzCopy\azcopy.exe -PathType Leaf)) {
+    ### Installing AzCopy
+    Write-Host " Installing AZCopy"
     Write-Host
-
-
-if (Test-Path -path $env:APPDATA\AzCopy\azcopy.exe -PathType Leaf){
-    ### Starting the AzCopy action < test file = Test.txt
-    Invoke-Expression "& '$env:APPDATA\AzCopy\azcopy.exe' login"
-    try {
-    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$DownloadsPath\Test.txt' https://jvdosd.blob.core.windows.net/bootimage/Test.txt" -ErrorAction SilentlyContinue | Out-Null
-    } catch {
-        Write-Host " Error"
-        cmd /c 'pause'
-    }
-} Else {
-    ### Install AzCopy
-    Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile AzCopy.zip -UseBasicParsing
-    Expand-Archive ./AzCopy.zip ./AzCopy -Force
+    Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile "$DownloadsPath\AzCopy.zip" -UseBasicParsing
+    Expand-Archive "$DownloadsPath\AzCopy.zip" "$DownloadsPath\AzCopy" -Force
     mkdir $env:APPDATA\AzCopy
-    Get-ChildItem ./AzCopy/*/azcopy.exe | Move-Item -Destination $env:APPDATA\AzCopy\
-    Remove-Item -Force AzCopy.zip
-    Remove-Item -Force -Recurse .\AzCopy\
-    # Rerun the script from start?
+    Get-ChildItem "$DownloadsPath\AzCopy\*\azcopy.exe" | Move-Item -Destination $env:APPDATA\AzCopy\
+    Remove-Item -Force "$DownloadsPath\AzCopy.zip"
+    Remove-Item -Force -Recurse "$DownloadsPath\AzCopy\"
+} Else {
+
+}
+Write-Host " Make sure the ISO location/name = $DownloadsPath\OSDCloud_NoPrompt.iso"
+Write-Host
+cmd /c 'pause'
+
+### Starting the AzCopy action to upload the file
+Write-Host " Uploading OSDCloud ISO to cloud storage"
+Invoke-Expression "& '$env:APPDATA\AzCopy\azcopy.exe' login"
+try {
+    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$DownloadsPath\OSDCloud_NoPrompt.iso' $BlobISO" -ErrorAction SilentlyContinue | Out-Null
+} catch {
+    Write-Host " Upload failed, error massage:"
+    Write-Host
+    Write-host "$error" -ForegroundColor red
+    Write-Host
+    cmd /c 'pause'
 }
