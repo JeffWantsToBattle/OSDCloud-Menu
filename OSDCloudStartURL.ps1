@@ -7,6 +7,7 @@ $BlobISO = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso
 if (Test-Path -Path "$env:ProgramFiles\WindowsPowerShell\Modules\OSD") {
     Write-Host " OSDCloud Module already installed"
 } else {
+    Clear-Host
     Write-Host " ***************************"
     Write-Host " *         OSDCloud        *"
     Write-Host " ***************************"
