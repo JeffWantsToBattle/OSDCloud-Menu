@@ -3,7 +3,8 @@ $GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
 $BlobISO = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
 ### Install OSDCloud module if not present
-if (Get-InstalledModule -Name OSD) {
+#if (Get-InstalledModule -Name OSD) { < slow geplaced with Test-Path for testing
+if (Test-Path -Path "$env:ProgramFiles\WindowsPowerShell\Modules\OSD") {
     Write-Host " OSDCloud Module already installed"
 } else {
     Write-Host " ***************************"
