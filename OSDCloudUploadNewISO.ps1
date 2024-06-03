@@ -1,6 +1,6 @@
 Clear-host
 Write-Host " ***************************"
-Write-Host " *   OSDCloud ISO Upload   *"
+Write-Host " *   Upload OSDCloud ISO   *"
 Write-Host " ***************************"
 Write-Host
 

@@ -9,7 +9,7 @@ if (Test-Path -Path "$env:ProgramFiles\WindowsPowerShell\Modules\OSD") {
 } else {
     Clear-Host
     Write-Host " ***************************"
-    Write-Host " *         OSDCloud        *"
+    Write-Host " *      OSDCloud Menu      *"
     Write-Host " ***************************"
     Write-Host
     Write-Host " Installing OSDCloud Module"
@@ -19,7 +19,7 @@ if (Test-Path -Path "$env:ProgramFiles\WindowsPowerShell\Modules\OSD") {
 
 $MainMenu = {
     Write-Host " ***************************"
-    Write-Host " *         OSDCloud        *"
+    Write-Host " *      OSDCloud Menu      *"
     Write-Host " ***************************"
     Write-Host
     Write-Host " 1.) OSDCloud Local (WinPE)"

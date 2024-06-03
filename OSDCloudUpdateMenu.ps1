@@ -24,7 +24,7 @@ $versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyCon
 Clear-Host
 $MainMenu = {
     Write-Host " ***************************"
-    Write-Host " *         OSDCloud        *"
+    Write-Host " *  OSDCloud Update Menu   *"
     Write-Host " ***************************"
     Write-Host
     

@@ -1,6 +1,6 @@
 Clear-Host
 Write-Host " ***************************"
-Write-Host " *    WinPE Installation   *"
+Write-Host " *  OSDCloud Installation  *"
 Write-Host " ***************************"
 Write-Host
 
@@ -33,7 +33,7 @@ if ( $testdisk -eq $null) {
     
     $MainMenu = {
         Write-Host " ***************************"
-        Write-Host " *    WinPE Installation   *"
+        Write-Host " *  OSDCloud Installation  *"
         Write-Host " ***************************"
         Write-Host
         Write-Host " WinPE Installation complete"
