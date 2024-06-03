@@ -34,9 +34,10 @@ $MainMenu = {
         Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
         Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
         Write-Host
-        Write-Host " 1.) Install OSDCloudUSB (WinPE)" -nonewline
+        Write-Host " 1.) Install OSDCloudUSB" -nonewline
         Write-Host " $versionWinPE" -ForegroundColor green
         Write-Host " 3.) Make new OSDCloud ISO"
+        Write-Host " 4.) Upload ISO (Downloads\OSDCloud_NoPrompt.iso)"
         Write-Host " Q.) Back"
         Write-Host
         Write-Host " Select an option and press Enter: "  -nonewline
@@ -61,7 +62,7 @@ $MainMenu = {
         }
         ### Menu if disk is found
         Write-Host
-        Write-Host " 1.) Install OSDCloudUSB (WinPE)" -nonewline
+        Write-Host " 1.) Install OSDCloudUSB" -nonewline
         Write-Host " $versionWinPE" -ForegroundColor green
         Write-Host " 2.) Update OSDCloudUSB config file" -nonewline
         Write-Host " $version" -ForegroundColor green
