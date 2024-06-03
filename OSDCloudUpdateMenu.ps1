@@ -66,8 +66,9 @@ $MainMenu = {
         Write-Host " 2.) Update OSDCloudUSB config file" -nonewline
         Write-Host " $version" -ForegroundColor green
         Write-Host " 3.) Make new OSDCloud ISO"
-        Write-Host " 4.) Download Windows"
-        Write-Host " 5.) Download Drivers"
+        Write-Host " 4.) Upload ISO (Downloads\OSDCloud_NoPrompt.iso)"
+        Write-Host " 5.) Download Windows"
+        Write-Host " 6.) Download Drivers"
         Write-Host " Q.) Back"
         Write-Host
         Write-Host " Select an option and press Enter: "  -nonewline
@@ -89,9 +90,12 @@ Do {
             Invoke-WebPSScript $GitHubURL/OSDCloudMakeISO.ps1
         }
         4 {
-            Invoke-WebPSScript $GitHubURL/OSDCloudDownloadWindows.ps1
+        Invoke-WebPSScript $GitHubURL/OSDCloudUploadNewISO.ps1
         }
         5 {
+            Invoke-WebPSScript $GitHubURL/OSDCloudDownloadWindows.ps1
+        }
+        6 {
             Invoke-WebPSScript $GitHubURL/OSDCloudDownloadDriver.ps1
         }
         Q {

@@ -58,9 +58,8 @@ $MainMenu = {
     Write-Host " *   OSDCloud ISO Maker    *"
     Write-Host " ***************************"
     Write-Host
-    Write-Host " 1.) Upload ISO to Azure Blob < testing"
-    Write-Host " 2.) Cleanup Workspace, downloaded files and software"
-    Write-Host " Q.) Back"
+    Write-Host " 1.) Cleanup Workspace, downloaded files and software"
+    Write-Host " Q.) Back (Keeps OSDCloud Workspace and installed software)"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
 }
@@ -72,9 +71,6 @@ Do {
     Switch ($Select)
         {
         1 {
-            Invoke-WebPSScript $GitHubURL/OSDCloudUploadNewISO.ps1
-        }
-        2 {
             Clear-host
             Write-Host " ***************************"
             Write-Host " *   OSDCloud ISO Maker    *"
