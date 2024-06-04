@@ -1,6 +1,6 @@
 ### Set the repository and ISO download link
-$GitHubURL = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
-$BlobISO = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
+$GitHubURL  = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
+$BlobISO    = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
 ### Install OSDCloud module if not present
 #if (Get-InstalledModule -Name OSD) { < Get-InstalledModule can be slow so replaced with Test-Path, need to test in WinPE

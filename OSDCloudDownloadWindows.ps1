@@ -1,8 +1,8 @@
 ### Getting Windows versions and language opties from "Start-OSDCloudGUI.json"
-$json = Invoke-WebRequest $GitHubURL/Update/Automate/Start-OSDCloudGUI.json | ConvertFrom-Json
-$WinVer = $json | ForEach-Object { $_.OSNameValues }
-$winVer = $WinVer.Replace(" x64", "")
-$WinLang = $json | ForEach-Object { $_.OSLanguageValues }
+$json     = Invoke-WebRequest $GitHubURL/Update/Automate/Start-OSDCloudGUI.json | ConvertFrom-Json
+$WinVer   = $json | ForEach-Object { $_.OSNameValues }
+$winVer   = $WinVer.Replace(" x64", "")
+$WinLang  = $json | ForEach-Object { $_.OSLanguageValues }
 
 Clear-Host
 Write-Host " ***************************"

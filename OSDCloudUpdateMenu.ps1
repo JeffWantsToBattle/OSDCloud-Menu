@@ -1,24 +1,24 @@
 ### Search OSDCloud and WinPE partitions
-$disk = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
-$disk = $disk.Name
-$diskwinpe = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'WinPE' }
-$diskwinpe = $diskwinpe.Name
+$disk       = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
+$disk       = $disk.Name
+$diskwinpe  = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'WinPE' }
+$diskwinpe  = $diskwinpe.Name
 
 ### Getting version from GitHub .\Update\Version.txt and .\Update\VersionWinPE.txt
-$version = Invoke-WebRequest -Uri "$GitHubURL/Update/Version.txt"
-$version = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
-$versionWinPE = Invoke-WebRequest -Uri $GitHubURL/Update/VersionWinPE.txt
-$versionWinPE = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
+$version        = Invoke-WebRequest -Uri "$GitHubURL/Update/Version.txt"
+$version        = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
+$versionWinPE   = Invoke-WebRequest -Uri $GitHubURL/Update/VersionWinPE.txt
+$versionWinPE   = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
 ### Setting file names and locations
-$DownloadsPath = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
-$file = "Version.txt"
-$fileWinPE = "VersionWinPE.txt"
-$folder = 'OSDCloud\'
-$location = "$disk$folder"
+$DownloadsPath  = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+$file           = "Version.txt"
+$fileWinPE      = "VersionWinPE.txt"
+$folder         = 'OSDCloud\'
+$location       = "$disk$folder"
 
 ### Getting versions from USB drive
-$versionondisk = Get-Content "$location$file" -ErrorAction SilentlyContinue
+$versionondisk      = Get-Content "$location$file" -ErrorAction SilentlyContinue
 $versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
 Clear-Host
