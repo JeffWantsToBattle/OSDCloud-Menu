@@ -1,5 +1,5 @@
 ### Set the repository and ISO download link
-$GitHubURL  = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSD/main'
+$GitHubURL  = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSDCloud-Menu/main'
 $BlobISO    = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
 ### Install OSDCloud module if not present
