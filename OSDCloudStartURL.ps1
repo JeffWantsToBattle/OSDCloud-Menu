@@ -1,6 +1,6 @@
 ### Set the repository and ISO download link
-$GitHubURL  = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSDCloud-Menu/main'
-$BlobISO    = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
+$repositoryURL  = 'https://raw.githubusercontent.com/JeffWantsToBattle/OSDCloud-Menu/main'
+$ISOURL         = 'https://jvdosd.blob.core.windows.net/bootimage/OSDCloud_NoPrompt.iso'
 
 ### Install OSDCloud module if not present
 #if (Get-InstalledModule -Name OSD) { < Get-InstalledModule can be slow so replaced with Test-Path, need to test in WinPE
@@ -48,7 +48,7 @@ Do {
             iex (irm az.osdcloud.com)
         }
         4 {
-            Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
+            Invoke-WebPSScript $repositoryURL/OSDCloudUpdateMenu.ps1
         }
         5 {
             Clear-Host

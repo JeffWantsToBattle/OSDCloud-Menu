@@ -1,5 +1,5 @@
 ### Getting Windows versions and language opties from "Start-OSDCloudGUI.json"
-$json     = Invoke-WebRequest $GitHubURL/Update/Automate/Start-OSDCloudGUI.json | ConvertFrom-Json
+$json     = Invoke-WebRequest $RepositoryURL/Update/Automate/Start-OSDCloudGUI.json | ConvertFrom-Json
 $WinVer   = $json | ForEach-Object { $_.OSNameValues }
 $winVer   = $WinVer.Replace(" x64", "")
 $WinLang  = $json | ForEach-Object { $_.OSLanguageValues }
@@ -23,7 +23,7 @@ Write-Host
 $WinVerSelection = Read-Host " Select an option and press Enter: "
 
 if ($WinVerSelection -eq 'Q') { 
-     Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
+     Invoke-WebPSScript $RepositoryURL/OSDCloudUpdateMenu.ps1
 } Else { 
 Clear-Host
 Write-Host " ***************************"
@@ -44,7 +44,7 @@ Write-Host
 $WinLangSelection = Read-Host " Select an option and press Enter: "
 
 if ($WinLangSelection -eq 'Q') { 
-     Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
+     Invoke-WebPSScript $RepositoryURL/OSDCloudUpdateMenu.ps1
 } Else { 
      Clear-Host
      Update-OSDCloudUSB -OSName $MenuVer.$WinVerSelection -OSLanguage $menuLang.$WinLangSelection -OSLicense Retail

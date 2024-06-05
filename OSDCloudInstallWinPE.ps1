@@ -11,13 +11,13 @@ if ( $testdisk -eq $null) {
     Write-Host "No USB Drive found, going back to menu"
     Write-Host
     cmd /c 'pause'
-    Invoke-WebPSScript "$GitHubURL/OSDCloudUpdateMenu.ps1"
+    Invoke-WebPSScript "$RepositoryURL/OSDCloudUpdateMenu.ps1"
 } else {
     Write-Host " Downloading WinPE"
     Write-Host
     
     ### Starting WinPE install from Azure Blob and writing the necessary files
-    New-OSDCloudUSB -fromIsoUrl "$BlobISO"
+    New-OSDCloudUSB -fromIsoUrl "$ISOURL"
     
     ### Re-enter Variables that where set in OSDCloudUpdateMenu.ps1
     ### Search OSDCloud disk after installation
@@ -26,8 +26,8 @@ if ( $testdisk -eq $null) {
     
     ### Creating files on de OSDCloud drive
     New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
-    Invoke-WebRequest -Uri $GitHubURL/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
-    Invoke-WebRequest -Uri $GitHubURL/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
+    Invoke-WebRequest -Uri $RepositoryURL/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
+    Invoke-WebRequest -Uri $RepositoryURL/Update/Start-Menu.ps1 -OutFile $location\Start-Menu.ps1
     New-Item -Path "$location" -Name "$file" -ItemType "file" -Value $version -force -ErrorAction SilentlyContinue | Out-Null
     New-Item -Path "$location" -Name "$fileWinPE" -ItemType "file" -Value $versionWinPE -force -ErrorAction SilentlyContinue | Out-Null
     
@@ -53,16 +53,16 @@ if ( $testdisk -eq $null) {
         Switch ($Select)
             {
             1 {
-                Invoke-WebPSScript $GitHubURL/OSDCloudInstallWinPE.ps1
+                Invoke-WebPSScript $RepositoryURL/OSDCloudInstallWinPE.ps1
             }
             2 {
                 ### Getting the active download folder, Dismounting the image (if mounted) and removing the ISO file
                 Dismount-DiskImage -ImagePath "$DownloadsPath\OSDCloud_NoPrompt.iso" -ErrorAction SilentlyContinue | Out-Null
                 Remove-Item $DownloadsPath\OSDCloud_NoPrompt.iso -ErrorAction SilentlyContinue | Out-Null
-                Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
+                Invoke-WebPSScript $RepositoryURL/OSDCloudUpdateMenu.ps1
             }
             Q {
-                Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
+                Invoke-WebPSScript $RepositoryURL/OSDCloudUpdateMenu.ps1
             }
         }       
     }

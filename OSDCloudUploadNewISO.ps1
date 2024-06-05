@@ -26,7 +26,7 @@ cmd /c 'pause'
 Write-Host " Uploading OSDCloud ISO to cloud storage"
 Invoke-Expression "& '$env:APPDATA\AzCopy\azcopy.exe' login"
 try {
-    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$DownloadsPath\OSDCloud_NoPrompt.iso' $BlobISO" -ErrorAction SilentlyContinue | Out-Null
+    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$DownloadsPath\OSDCloud_NoPrompt.iso' $ISOURL" -ErrorAction SilentlyContinue | Out-Null
 } catch {
     Write-Host " Upload failed, error massage:"
     Write-Host

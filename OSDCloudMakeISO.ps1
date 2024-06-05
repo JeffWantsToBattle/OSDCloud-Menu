@@ -49,7 +49,7 @@ Get-ChildItem $WorkspaceLoc\Media\Boot | Where {$_.PSIsContainer} | Where {$_.Na
 Get-ChildItem $WorkspaceLoc\Media\EFI\Microsoft\Boot | Where {$_.PSIsContainer} | Where {$_.Name -notin $KeepTheseDirs} | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
 
 ### Configure WinPE
-Edit-OSDCloudWinPE -CloudDriver * -StartURL $GitHubURL/OSDCloudStartURL.ps1
+Edit-OSDCloudWinPE -CloudDriver * -StartURL $RepositoryURL/OSDCloudStartURL.ps1
 Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath" -ErrorAction SilentlyContinue
 Write-host " OSDCloud ISO created and copied to $DownloadsPath"
 
@@ -88,7 +88,7 @@ Do {
             cmd /c 'pause'
         }
         Q {
-            Invoke-WebPSScript $GitHubURL/OSDCloudUpdateMenu.ps1
+            Invoke-WebPSScript $RepositoryURL/OSDCloudUpdateMenu.ps1
         }
     }
 }
