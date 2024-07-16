@@ -27,6 +27,7 @@ $MainMenu = {
     Write-Host " 3.) OSDCloud Azure Sandbox (WinPE)"
     Write-Host " 4.) Install/Update OSDCloudUSB (Windows)"
     Write-Host " 5.) Autopilot (Windows)"
+    Write-Host " 6.) OSDCloud Local + update json (test)"
     Write-Host " Q.) Exit Powershell"
     Write-Host
     Write-Host " Select an option and press Enter: "  -nonewline
@@ -65,6 +66,9 @@ Do {
                 install-script -Name Get-WindowsAutoPilotInfo -Force
                 Get-WindowsAutopilotInfo.ps1 -online
             }
+        6 {
+            Start-OSDCloudGUI
+        }
         }
         Q {
             Exit
