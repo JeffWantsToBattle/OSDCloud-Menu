@@ -66,9 +66,9 @@ Do {
                 install-script -Name Get-WindowsAutoPilotInfo -Force
                 Get-WindowsAutopilotInfo.ps1 -online
             }
+        }
         6 {
             Start-OSDCloudGUI
-        }
         }
         Q {
             Exit
