@@ -21,7 +21,7 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
 
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
-        Write-host " Installing Windows ADK add-on"
+    Write-host " Installing Windows ADK add-on"
     Invoke-WebRequest $ADKAddonURL -outfile $downloadspath\adkwinpesetup.exe
     Start-Process -NoNewWindow -FilePath "$downloadspath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart" -wait
     Remove-Item -Path $downloadspath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
