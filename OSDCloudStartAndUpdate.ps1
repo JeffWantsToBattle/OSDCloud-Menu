@@ -13,6 +13,7 @@ $location       = "$disk$folder"
 
 ### Getting versions from USB drive
 $versionondisk  = Get-Content "$location$file" -ErrorAction SilentlyContinue
+Clear-Host
 if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
     Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
@@ -46,5 +47,5 @@ if ($disk -eq $null) {
     }
 }
 
-### Start OSDCloud GUI 
+### Start OSDCloud GUI
 Start-OSDCloudGUI
