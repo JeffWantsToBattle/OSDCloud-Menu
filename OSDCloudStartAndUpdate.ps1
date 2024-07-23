@@ -3,7 +3,7 @@ $disk       = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloud
 $disk       = $disk.Name
 
 ### Getting version from GitHub .\Update\Version.txt and .\Update\VersionWinPE.txt
-$version        = Invoke-WebRequest -Uri "$RepositoryURL/Update/Version.txt"
+$version        = Invoke-WebRequest -Uri "$RepositoryURL/Update/Version.txt" -UseBasicParsing
 $version        = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
 ### Setting file names and locations
@@ -30,7 +30,7 @@ if ($disk -eq $null) {
         New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
         ### Write new version + error handeling
         try {
-            Invoke-WebRequest -Uri $RepositoryURL/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json
+            Invoke-WebRequest -Uri $RepositoryURL/Update/Automate/Start-OSDCloudGUI.json -OutFile $location\Automate\Start-OSDCloudGUI.json -UseBasicParsing
         } catch {
             Write-host " An error occurred: $($_.Exception.Message)" -ForegroundColor Red
             $error1 = 1
