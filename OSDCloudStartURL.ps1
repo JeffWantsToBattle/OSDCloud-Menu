@@ -68,7 +68,7 @@ Do {
             }
         }
         6 {
-            Start-OSDCloudGUI
+            Invoke-WebPSScript $RepositoryURL/OSDCloudStartAndUpdate.ps1
         }
         Q {
             Exit
