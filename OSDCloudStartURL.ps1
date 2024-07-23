@@ -15,7 +15,7 @@ $versionWinPE   = Invoke-WebRequest -Uri $RepositoryURL/Update/VersionWinPE.txt
 $versionWinPE   = $versionWinPE.Content.Split([Environment]::NewLine) | Select-Object -First 1
 
 ### Setting file names and locations
-$DownloadsPath  = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
+$downloadspath  = (New-Object -ComObject Shell.Application).Namespace('shell:Downloads').Self.Path
 $file           = "Version.txt"
 $fileWinPE      = "VersionWinPE.txt"
 $folder         = 'OSDCloud\'
