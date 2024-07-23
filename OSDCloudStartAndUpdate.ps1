@@ -18,13 +18,11 @@ if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
     Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
     Write-Host
-    cmd /c 'pause'
 } else {
     ### Version check
     if ($versionondisk -eq $version){
         Write-host " OSDCloudUSB already updated to version $version" -ForegroundColor Green
         Write-Host
-        cmd /c 'pause'
     } else {
         Write-host " Updating OSDCloudUSB to version $version" -ForegroundColor Green
         New-Item -ItemType Directory -Path $location\Automate -force -ErrorAction SilentlyContinue | Out-Null
@@ -37,12 +35,10 @@ if ($disk -eq $null) {
         }
         if ($error1 -eq "1"){
             Write-Host
-            cmd /c 'pause'
         } else {
             New-Item -Path $location -Name "$file" -ItemType "file" -Value $version -Force -ErrorAction SilentlyContinue | Out-Null
             Write-host " Updating compleet to version $version" -ForegroundColor Green
             Write-Host
-            cmd /c 'pause'
         }
     }
 }
