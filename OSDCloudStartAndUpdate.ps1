@@ -1,19 +1,8 @@
-### Search OSDCloud and WinPE partitions
-$disk       = Get-WMIObject Win32_Volume | Where-Object { $_.Label -eq 'OSDCloudUSB' }
-$disk       = $disk.Name
-
-### Getting version from GitHub .\Update\Version.txt and .\Update\VersionWinPE.txt
-$version        = Invoke-WebRequest -Uri "$RepositoryURL/Update/Version.txt" -UseBasicParsing
-$version        = $version.Content.Split([Environment]::NewLine) | Select-Object -First 1
-
-### Setting file names and locations
-$file           = "Version.txt"
-$folder         = 'OSDCloud\'
-$location       = "$disk$folder"
-
-### Getting versions from USB drive
-$versionondisk  = Get-Content "$location$file" -ErrorAction SilentlyContinue
 Clear-Host
+Write-Host " ***************************"
+Write-Host " *      Start OSDCloud     *"
+Write-Host " ***************************"
+Write-Host
 if ($disk -eq $null) {
     Write-host " OSDCloudUSB drive not found" -ForegroundColor Red
     Write-host " Check that the partition name matches: OSDCloudUSB" -ForegroundColor Red
