@@ -9,16 +9,16 @@ if (-NOT ((Test-Path -path $env:APPDATA\AzCopy\azcopy.exe -PathType Leaf)) {
     ### Installing AzCopy
     Write-Host " Installing AZCopy"
     Write-Host
-    Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile "$DownloadsPath\AzCopy.zip" -UseBasicParsing
-    Expand-Archive "$DownloadsPath\AzCopy.zip" "$DownloadsPath\AzCopy" -Force
+    Invoke-WebRequest -Uri "https://aka.ms/downloadazcopy-v10-windows" -OutFile "$downloadspath\AzCopy.zip" -UseBasicParsing
+    Expand-Archive "$downloadspath\AzCopy.zip" "$downloadspath\AzCopy" -Force
     mkdir $env:APPDATA\AzCopy
-    Get-ChildItem "$DownloadsPath\AzCopy\*\azcopy.exe" | Move-Item -Destination $env:APPDATA\AzCopy\
-    Remove-Item -Force "$DownloadsPath\AzCopy.zip"
-    Remove-Item -Force -Recurse "$DownloadsPath\AzCopy\"
+    Get-ChildItem "$downloadspath\AzCopy\*\azcopy.exe" | Move-Item -Destination $env:APPDATA\AzCopy\
+    Remove-Item -Force "$downloadspath\AzCopy.zip"
+    Remove-Item -Force -Recurse "$downloadspath\AzCopy\"
 } Else {
 
 }
-Write-Host " Make sure the ISO location/name = $DownloadsPath\OSDCloud_NoPrompt.iso"
+Write-Host " Make sure the ISO location/name = $downloadspath\OSDCloud_NoPrompt.iso"
 Write-Host
 cmd /c 'pause'
 
@@ -26,7 +26,7 @@ cmd /c 'pause'
 Write-Host " Uploading OSDCloud ISO to cloud storage"
 Invoke-Expression "& '$env:APPDATA\AzCopy\azcopy.exe' login"
 try {
-    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$DownloadsPath\OSDCloud_NoPrompt.iso' $ISOURL" -ErrorAction SilentlyContinue | Out-Null
+    Invoke-Expression  "& '$env:APPDATA\AzCopy\azcopy.exe' copy '$downloadspath\OSDCloud_NoPrompt.iso' $ISOURL" -ErrorAction SilentlyContinue | Out-Null
 } catch {
     Write-Host " Upload failed, error massage:"
     Write-Host
