@@ -26,7 +26,6 @@ $versionondisk      = Get-Content "$location$file" -ErrorAction SilentlyContinue
 $versionWinPEondisk = Get-Content "$location$fileWinPE" -ErrorAction SilentlyContinue
 
 ### Install OSDCloud module if not present
-#if (Get-InstalledModule -Name OSD) { < Get-InstalledModule can be slow so replaced with Test-Path, need to test in WinPE
 if (Test-Path -Path "$env:ProgramFiles\WindowsPowerShell\Modules\OSD") {
     Write-Host " OSDCloud Module already installed"
 } else {
