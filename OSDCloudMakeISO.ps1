@@ -12,9 +12,9 @@ Write-Host
 ### Install Windows ADK
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit")) {
     Write-host " Installing Windows ADK"
-    Invoke-WebRequest $ADKURL -outfile $DownloadsPath\adksetup.exe
-    Start-Process -NoNewWindow -FilePath "$DownloadsPath\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart" -wait
-    Remove-Item -Path $DownloadsPath\adksetup.exe -Force -ErrorAction SilentlyContinue
+    Invoke-WebRequest $ADKURL -outfile $downloadspath\adksetup.exe
+    Start-Process -NoNewWindow -FilePath "$downloadspath\adksetup.exe" -ArgumentList "/quiet /features OptionId.DeploymentTools /norestart" -wait
+    Remove-Item -Path $downloadspath\adksetup.exe -Force -ErrorAction SilentlyContinue
 } else {
     Write-host " Windows ADK already installed"
 }
@@ -22,9 +22,9 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit"
 ### Install Windows ADK add-on
 if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit Windows Preinstallation Environment Add-ons")) {
         Write-host " Installing Windows ADK add-on"
-    Invoke-WebRequest $ADKAddonURL -outfile $DownloadsPath\adkwinpesetup.exe
-    Start-Process -NoNewWindow -FilePath "$DownloadsPath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart" -wait
-    Remove-Item -Path $DownloadsPath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
+    Invoke-WebRequest $ADKAddonURL -outfile $downloadspath\adkwinpesetup.exe
+    Start-Process -NoNewWindow -FilePath "$downloadspath\adkwinpesetup.exe" -ArgumentList "/quiet /norestart" -wait
+    Remove-Item -Path $downloadspath\adkwinpesetup.exe -Force -ErrorAction SilentlyContinue
 
 } else {
     Write-host " Windows ADK add-on already installed"
@@ -50,8 +50,8 @@ Get-ChildItem $WorkspaceLoc\Media\EFI\Microsoft\Boot | Where {$_.PSIsContainer} 
 
 ### Configure WinPE
 Edit-OSDCloudWinPE -CloudDriver * -StartURL $RepositoryURL/OSDCloudStartURL.ps1
-Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$DownloadsPath" -ErrorAction SilentlyContinue
-Write-host " OSDCloud ISO created and copied to $DownloadsPath"
+Copy-Item "$NewOSDWorkspace\OSDCloud_NoPrompt.iso" -Destination "$downloadspath" -ErrorAction SilentlyContinue
+Write-host " OSDCloud ISO created and copied to $downloadspath"
 
 $MainMenu = {
     Write-Host " ***************************"
