@@ -30,10 +30,13 @@ if (-Not (get-package | where Name -Like "Windows Assessment and Deployment Kit 
     Write-host " Windows ADK add-on already installed"
 }
 
+### Creating OSDCloud Template (WinPE)
+Write-host " Making new OSDCloud Template"
+New-OSDCloudTemplate
+
 ### Creating OSDCloud Workspace
 if (-Not (Get-OSDCloudWorkspace)) {
-    Write-host " Making new OSDCloud Template/Workspace"
-    New-OSDCloudTemplate
+    Write-host " Making new OSDCloud Workspace"
     New-OSDCloudWorkspace "$NewOSDWorkspace"
     $WorkspaceLoc = Get-OSDCloudWorkspace
     Write-host " Workspace created, location: $WorkspaceLoc"
